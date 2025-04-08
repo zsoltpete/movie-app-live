@@ -10,9 +10,22 @@
 		5454C3FA2DA52BF6009B0231 /* movie-app-live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-app-live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5454C43A2DA53EDA009B0231 /* Exceptions for "movie-app-live" folder in "movie-app-live" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5454C3F92DA52BF6009B0231 /* movie-app-live */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5454C3FC2DA52BF6009B0231 /* movie-app-live */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5454C43A2DA53EDA009B0231 /* Exceptions for "movie-app-live" folder in "movie-app-live" target */,
+			);
 			path = "movie-app-live";
 			sourceTree = "<group>";
 		};
@@ -91,6 +104,7 @@
 			knownRegions = (
 				en,
 				Base,
+				hu,
 			);
 			mainGroup = 5454C3F12DA52BF6009B0231;
 			minimizedProjectReferenceProxies = 1;
@@ -255,6 +269,7 @@
 				DEVELOPMENT_TEAM = AFEL4SQNP4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "movie-app-live/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -285,6 +300,7 @@
 				DEVELOPMENT_TEAM = AFEL4SQNP4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "movie-app-live/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
