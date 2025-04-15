@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import InjectPropertyWrapper
 
 class GenreSectionViewModel: ObservableObject {
     @Published var genres: [Genre] = []
     
     private var movieService: MoviesServiceProtocol = MoviesService()
+//    @Inject
+//    private var movieService: MoviesServiceProtocol
     
     func fetchGenres() async {
         

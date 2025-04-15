@@ -25,8 +25,16 @@ class MoviesService: MoviesServiceProtocol {
             session: Session(configuration: configuration,
                              startRequestsImmediately: false),
             plugins: [
-                NetworkLoggerPlugin()
-            ])
+            NetworkLoggerPlugin(
+                configuration: NetworkLoggerPlugin.Configuration(
+                    output: { _, items in
+                        for item in items {
+                            print("Response \(item)")
+                            print(item, separator: ",", terminator: "\n")
+                        }
+                    },
+                    logOptions: .verbose))
+        ])
     }
     
     func fetchGenres(req: FetchGenreRequest) async throws -> [Genre] {

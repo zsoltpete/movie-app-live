@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import InjectPropertyWrapper
 
 class MovieListViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     private let service = MoviesService()
+    
+//    @Inject
+//    private var service: MoviesServiceProtocol
     
     func loadMovies(by genreId: Int) async {
         do {
@@ -33,6 +37,10 @@ struct MovieListView: View {
         GridItem(.flexible(), spacing: 16)
     ]
     
+//    let columns = [
+//        GridItem(.adaptive(minimum: 150), spacing: 16)
+//    ]
+    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 24) {
@@ -44,7 +52,6 @@ struct MovieListView: View {
             .padding(.top, 16)
         }
         .navigationTitle(genre.name)
-//        .background(Color.black.ignoresSafeArea())
         .onAppear {
             Task {
                 await viewModel.loadMovies(by: genre.id)
@@ -82,7 +89,7 @@ struct MovieCellView: View {
                                     .foregroundColor(.white)
                             }
 
-                        @unknown default:
+                        default:
                             EmptyView()
                         }
                     }
