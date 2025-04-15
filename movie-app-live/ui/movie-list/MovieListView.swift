@@ -99,14 +99,15 @@ struct MovieCellView: View {
                     .cornerRadius(12)
                 }
                 
+                //TODO: Import star image and add new font
                 HStack(spacing: 6) {
-                    Label(String(format: "%.1f", movie.rating), systemImage: "star.fill")
-                        .font(.caption2)
-                        .foregroundColor(.yellow)
+                    Image(.star)
+                    Text(String(format: "%.1f", movie.rating))
+                        .font(Fonts.labelBold)
                 }
                 .padding(6)
-                .background(Color.black.opacity(0.5))
-                .cornerRadius(8)
+                .background(Color.main.opacity(0.5))
+                .cornerRadius(12)
                 .padding(6)
             }
 
