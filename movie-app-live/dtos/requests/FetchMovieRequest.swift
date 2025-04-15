@@ -10,6 +10,6 @@ struct FetchMoviesRequest {
     let genreId: Int
     
     func asRequestParams() -> [String: Any] {
-        return ["query": genreId]
+        return ["with_genres": genreId]
     }
 }

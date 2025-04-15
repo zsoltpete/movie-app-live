@@ -8,12 +8,15 @@
 import SwiftUI
 import InjectPropertyWrapper
 
-class MovieListViewModel: ObservableObject {
-    @Published var movies: [Movie] = []
-    private let service = MoviesService()
+protocol MovieListViewModelProtocol: ObservableObject {
     
-//    @Inject
-//    private var service: MoviesServiceProtocol
+}
+
+class MovieListViewModel: MovieListViewModelProtocol {
+    @Published var movies: [Movie] = []
+    
+    @Inject
+    private var service: MoviesServiceProtocol
     
     func loadMovies(by genreId: Int) async {
         do {
@@ -32,14 +35,14 @@ struct MovieListView: View {
     @StateObject private var viewModel = MovieListViewModel()
     let genre: Genre
     
-    let columns = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16)
-    ]
-    
 //    let columns = [
-//        GridItem(.adaptive(minimum: 150), spacing: 16)
+//        GridItem(.flexible(), spacing: 16),
+//        GridItem(.flexible(), spacing: 16)
 //    ]
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 150), spacing: 16)
+    ]
     
     var body: some View {
         ScrollView {
@@ -77,25 +80,23 @@ struct MovieCellView: View {
                                 ProgressView()
                             }
 
-                        case .success(let image):
+                        case let .success(image):
                             image
                                 .resizable()
                                 .scaledToFill()
 
-                        case .failure:
+                        case .failure(let error):
                             ZStack {
                                 Color.red.opacity(0.3)
                                 Image(systemName: "photo")
                                     .foregroundColor(.white)
                             }
-
-                        default:
+                        @unknown default:
                             EmptyView()
                         }
                     }
                     .frame(height: 100)
                     .frame(maxWidth: .infinity)
-                    .clipped()
                     .cornerRadius(12)
                 }
                 
@@ -127,3 +128,6 @@ struct MovieCellView: View {
 }
 
 
+#Preview {
+    MovieListView(genre: Genre(id: 28, name: "Action") )
+}

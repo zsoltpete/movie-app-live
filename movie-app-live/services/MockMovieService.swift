@@ -9,9 +9,6 @@ import Foundation
 
 class MockMoviesService: MoviesServiceProtocol {
     
-    init() {
-    }
-    
     func fetchGenres(req: FetchGenreRequest) async throws -> [Genre] {
         return [
             Genre(id: 0, name: "Action"),
@@ -63,5 +60,8 @@ class MockMoviesService: MoviesServiceProtocol {
         ]
     }
     
+    func fetchTVGenres(req: FetchGenreRequest) async throws -> [Genre] {
+        []
+    }
     
 }

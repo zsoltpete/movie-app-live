@@ -10,7 +10,7 @@ import Moya
 import Foundation
 
 class ServiceAssembly: Assembly {
-    
+
     func assemble(container: Container) {
         container.register(MoyaProvider<MultiTarget>.self) { _ in
             let configuration = URLSessionConfiguration.default

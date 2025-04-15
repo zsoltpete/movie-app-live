@@ -8,18 +8,22 @@
 import SwiftUI
 import InjectPropertyWrapper
 
-class GenreSectionViewModel: ObservableObject {
+protocol GenreSectionViewModelProtocol: ObservableObject {
+    
+}
+
+class GenreSectionViewModel: GenreSectionViewModelProtocol {
     @Published var genres: [Genre] = []
     
-    private var movieService: MoviesServiceProtocol = MoviesService()
-//    @Inject
-//    private var movieService: MoviesServiceProtocol
+    @Inject
+    private var movieService: MoviesServiceProtocol
     
     func fetchGenres() async {
         
         do {
             let request = FetchGenreRequest()
-            let genres = try await movieService.fetchGenres(req: request)
+            let genres = Environments.name == .tv ? try await movieService.fetchTVGenres(req: request) :
+                                                    try await movieService.fetchGenres(req: request)
             DispatchQueue.main.async {
                 self.genres = genres
             }
@@ -55,7 +59,7 @@ struct GenreSectionView: View {
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
-            .navigationTitle("genreSection.title")
+            .navigationTitle(Environments.name == .tv ? "TV" : "genreSection.title")
             
         }
         .onAppear {
