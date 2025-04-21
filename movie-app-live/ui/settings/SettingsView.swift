@@ -1,12 +1,5 @@
 import SwiftUI
-
-protocol SettingsViewModelProtocol: ObservableObject {
-    
-}
-
-class SettingsViewModel: SettingsViewModelProtocol {
-    
-}
+import InjectPropertyWrapper
 
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()

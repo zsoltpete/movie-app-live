@@ -8,37 +8,9 @@
 import SwiftUI
 import InjectPropertyWrapper
 
-protocol MovieListViewModelProtocol: ObservableObject {
-    
-}
-
-class MovieListViewModel: MovieListViewModelProtocol {
-    @Published var movies: [Movie] = []
-    
-    @Inject
-    private var service: MoviesServiceProtocol
-    
-    func loadMovies(by genreId: Int) async {
-        do {
-            let request = FetchMoviesRequest(genreId: genreId)
-            let movies = try await service.fetchMovies(req: request)
-            DispatchQueue.main.async {
-                self.movies = movies
-            }
-        } catch {
-            print("Error fetching genres: \(error)")
-        }
-    }
-}
-
 struct MovieListView: View {
     @StateObject private var viewModel = MovieListViewModel()
     let genre: Genre
-    
-//    let columns = [
-//        GridItem(.flexible(), spacing: 16),
-//        GridItem(.flexible(), spacing: 16)
-//    ]
     
     let columns = [
         GridItem(.adaptive(minimum: 150), spacing: 16)
@@ -62,8 +34,6 @@ struct MovieListView: View {
         }
     }
 }
-
-
 
 struct MovieCellView: View {
     let movie: Movie
@@ -96,6 +66,7 @@ struct MovieCellView: View {
                         }
                     }
                     .frame(height: 100)
+                    .frame(maxHeight: 180)
                     .frame(maxWidth: .infinity)
                     .cornerRadius(12)
                 }
@@ -126,7 +97,6 @@ struct MovieCellView: View {
         }
     }
 }
-
 
 #Preview {
     MovieListView(genre: Genre(id: 28, name: "Action") )

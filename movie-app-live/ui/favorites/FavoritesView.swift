@@ -1,12 +1,5 @@
 import SwiftUI
-
-protocol FavoritesViewModelProtocol: ObservableObject {
-    
-}
-
-class FavoritesViewModel: FavoritesViewModelProtocol {
-    
-}
+import InjectPropertyWrapper
 
 struct FavoritesView: View {
     @StateObject private var viewModel = FavoritesViewModel()

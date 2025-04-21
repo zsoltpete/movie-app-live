@@ -4,9 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Raleway-Medium</string>
 		<string>Lato-Bold.ttf</string>
 		<string>Lato-Regular.ttf</string>
 		<string>Raleway-ExtraBold.otf</string>
+		<string>Raleway-Medium.ttf</string>
 	</array>
 </dict>
 </plist>
