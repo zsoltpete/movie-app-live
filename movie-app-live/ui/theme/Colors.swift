@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Color {
-    static let tabBarBackground = Color(hex: "343434")
+//    static let tabBarBackground = Color(hex: "343434")
 }
 
 extension Color {

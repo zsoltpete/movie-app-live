@@ -10,7 +10,6 @@ import SwiftUI
 struct TabBarItemView: View {
     @Binding var selectedTab: TabType
     var icon: TabIcon
-    var height: CGFloat = 26.0
     
     var body: some View {
         let tabColor = icon.tab == selectedTab ? Color.tabBarBackground : .white
@@ -23,7 +22,7 @@ struct TabBarItemView: View {
                     .renderingMode(.template)
                     .foregroundStyle(tabColor)
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 40.0, height: height)
+                    .frame(width: 40.0, height: 40.0)
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
                     .accessibilityLabel(icon.tab.rawValue)

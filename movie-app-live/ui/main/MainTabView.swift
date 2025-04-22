@@ -30,27 +30,31 @@ struct MainTabView: View {
             TabView(selection: $selectedTab) {
                 GenreSectionView()
                     .tag(TabType.genre)
-                    .background(Color.tabBarBackground).ignoresSafeArea()
+                    .background(Color.tabBarBackground)
+                    .ignoresSafeArea()
                 
                 
                 SearchView()
                     .tag(TabType.search)
-                    .background(Color.tabBarBackground).ignoresSafeArea()
+                    .background(Color.tabBarBackground)
+                    .ignoresSafeArea()
                 
                 FavoritesView()
                     .tag(TabType.favorites)
-                    .background(Color.tabBarBackground).ignoresSafeArea()
+                    .background(Color.tabBarBackground)
+                    .ignoresSafeArea()
                 
                 SettingsView()
                     .tag(TabType.settings)
-                    .background(Color.tabBarBackground).ignoresSafeArea()
+                    .background(Color.tabBarBackground)
+                    .ignoresSafeArea()
             }
             .background(.clear)
             
             HStack() {
                 Spacer()
                 ForEach(icons) { icon in
-                    TabBarItemView(selectedTab: $selectedTab, icon: icon, height: 40.0)
+                    TabBarItemView(selectedTab: $selectedTab, icon: icon)
                     Spacer()
                 }
             }

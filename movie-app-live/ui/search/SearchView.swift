@@ -56,7 +56,6 @@ struct SearchView: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
         }
     }
 }
