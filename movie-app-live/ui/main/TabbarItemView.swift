@@ -26,6 +26,7 @@ struct TabBarItemView: View {
                     .frame(width: 40.0, height: height)
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
+                    .accessibilityLabel(icon.tab.rawValue)
             }
         }.frame(width: 40.0, height: 40.0)
             .onTapGesture {

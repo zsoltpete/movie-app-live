@@ -24,6 +24,7 @@ struct GenreSectionView: View {
                         Text(genre.name)
                             .font(Fonts.title)
                             .foregroundStyle(.primary)
+                            .accessibilityLabel(genre.name)
                         Spacer()
                         Image(.rightArrow)
                     }
@@ -33,6 +34,7 @@ struct GenreSectionView: View {
             }
             .listStyle(.plain)
             .navigationTitle(Environments.name == .tv ? "TV" : "genreSection.title")
+            .accessibilityLabel("testCollectionView")
         }
         .onAppear {
             Task {
