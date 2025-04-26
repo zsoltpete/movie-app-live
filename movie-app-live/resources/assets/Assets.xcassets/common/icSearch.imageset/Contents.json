@@ -1,6 +1,16 @@
 {
   "images" : [
     {
+      "filename" : "icSearch-dark.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "filename" : "search-icon.svg",
       "idiom" : "universal"
     }
