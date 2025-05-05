@@ -6,8 +6,21 @@
 //
 
 import Foundation
+import Combine
 
 class MockMoviesService: MoviesServiceProtocol {
+    func fetchGenres(req: FetchGenreRequest) -> AnyPublisher<[Genre], MovieError> {
+        Just([])
+                .setFailureType(to: MovieError.self)
+                .eraseToAnyPublisher()
+    }
+    
+    func fetchTVGenres(req: FetchGenreRequest) -> AnyPublisher<[Genre], MovieError> {
+        Just([])
+                .setFailureType(to: MovieError.self)
+                .eraseToAnyPublisher()
+    }
+    
     func searchMovies(req: SearchMovieRequest) async throws -> [Movie] {
         [
             Movie(id: 1,
