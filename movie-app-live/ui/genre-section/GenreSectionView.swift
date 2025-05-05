@@ -29,11 +29,6 @@ struct GenreSectionView: View {
             .navigationTitle(Environments.name == .tv ? "TV" : "genreSection.title")
             .accessibilityLabel("testCollectionView")
         }
-        .onAppear {
-            Task {
-                await viewModel.fetchGenres()
-            }
-        }
         .alert(item: $viewModel.alertModel) { model in
             return Alert(
                 title: Text(LocalizedStringKey(model.title)),
