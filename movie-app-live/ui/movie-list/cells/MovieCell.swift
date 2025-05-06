@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieCell: View {
-    let movie: Movie
+    let movie: MediaItem
     
     var body: some View {
         VStack(alignment: .leading, spacing: LayoutConst.smallPadding) {
@@ -67,7 +67,7 @@ struct MovieCell: View {
 }
 
 #Preview {
-    MovieCell(movie: Movie(id: 2,
+    MovieCell(movie: MediaItem(id: 2,
                            title: "Mock movie2",
                            year: "2024",
                            duration: "1h 34m",

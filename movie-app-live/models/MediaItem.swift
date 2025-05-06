@@ -1,5 +1,5 @@
 //
-//  Movie.swift
+//  MediaItem.swift
 //  movie-app-live
 //
 //  Created by Zsolt Pete on 2025. 04. 15..
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Identifiable {
+struct MediaItem: Identifiable {
     let id: Int
     let title: String
     let year: String
@@ -40,6 +40,28 @@ struct Movie: Identifiable {
         
         self.id = dto.id
         self.title = dto.title
+        self.year = year
+        self.duration = duration
+        self.imageUrl = imageUrl
+        self.rating = dto.voteAverage ?? 0.0
+        self.voteCount = dto.voteCount ?? 0
+        
+    }
+    
+    init(dto: TVResponse) {
+        let releaseDate: String? = dto.firstAirDate
+        let prefixedYear: Substring = releaseDate?.prefix(4) ?? "-"
+        let year = String(prefixedYear)
+        let duration = "1h 25min" // TODO: placeholder – ha lesz ilyen adat, cserélhető
+        
+        var imageUrl: URL? {
+            dto.posterPath.flatMap {
+                URL(string: "https://image.tmdb.org/t/p/w500\($0)")
+            }
+        }
+        
+        self.id = dto.id
+        self.title = dto.name
         self.year = year
         self.duration = duration
         self.imageUrl = imageUrl

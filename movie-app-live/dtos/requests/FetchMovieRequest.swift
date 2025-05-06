@@ -5,7 +5,7 @@
 //  Created by Zsolt Pete on 2025. 04. 15..
 //
 
-struct FetchMoviesRequest {
+struct FetchMediaListRequest {
     let accessToken: String = Config.bearerToken
     let genreId: Int
     

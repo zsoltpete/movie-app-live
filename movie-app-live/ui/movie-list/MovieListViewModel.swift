@@ -1,26 +1,42 @@
 import Foundation
 import InjectPropertyWrapper
+import Combine
 
 protocol MovieListViewModelProtocol: ObservableObject {
-    var movies: [Movie] { get }
-    func loadMovies(by genreId: Int) async
+    var movies: [MediaItem] { get }
 }
 
-class MovieListViewModel: MovieListViewModelProtocol {
-    @Published var movies: [Movie] = []
+class MovieListViewModel: MovieListViewModelProtocol, ErrorPrentable {
+    @Published var movies: [MediaItem] = []
+    @Published var alertModel: AlertModel? = nil
+    
+    let genreIdSubject = PassthroughSubject<Int, Never>()
+    
+    private var cancellables = Set<AnyCancellable>()
     
     @Inject
-    private var service: MoviesServiceProtocol
+    private var service: ReactiveMoviesServiceProtocol
     
-    func loadMovies(by genreId: Int) async {
-        do {
-            let request = FetchMoviesRequest(genreId: genreId)
-            let movies = try await service.fetchMovies(req: request)
-            DispatchQueue.main.async {
-                self.movies = movies
+    init() {
+        
+        genreIdSubject
+            .flatMap { [weak self] genreId -> AnyPublisher<[MediaItem], MovieError> in
+                guard let self = self else {
+                    preconditionFailure("There is no self")
+                }
+                let request = FetchMediaListRequest(genreId: genreId)
+                return Environments.name == .tv ?
+                                                self.service.fetchTV(req: request) :
+                                                self.service.fetchMovies(req: request)
+                
             }
-        } catch {
-            print("Error fetching movies: \(error)")
-        }
+            .sink { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.alertModel = self?.toAlerModel(error)
+                }
+            } receiveValue: { [weak self] movies in
+                self?.movies = movies
+            }
+            .store(in: &cancellables)
     }
-} 
+}

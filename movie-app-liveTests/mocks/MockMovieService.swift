@@ -3,7 +3,7 @@ import Foundation
 
 class MockMovieService: MoviesServiceProtocol {
     var mockGenres: [Genre] = []
-    var mockMovies: [Movie] = []
+    var mockMovies: [MediaItem] = []
     
     func fetchGenres(req: FetchGenreRequest) async throws -> [Genre] {
         return mockGenres
@@ -13,11 +13,11 @@ class MockMovieService: MoviesServiceProtocol {
         return mockGenres
     }
     
-    func fetchMovies(req: FetchMoviesRequest) async throws -> [Movie] {
+    func fetchMovies(req: FetchMediaListRequest) async throws -> [MediaItem] {
         return mockMovies
     }
     
-    func searchMovies(req: SearchMovieRequest) async throws -> [Movie] {
+    func searchMovies(req: SearchMovieRequest) async throws -> [MediaItem] {
         return mockMovies
     }
 } 

@@ -27,10 +27,17 @@ struct MovieListView: View {
             .padding(.top, LayoutConst.normalPadding)
         }
         .navigationTitle(genre.name)
+        .alert(item: $viewModel.alertModel) { model in
+            return Alert(
+                title: Text(LocalizedStringKey(model.title)),
+                message: Text(LocalizedStringKey(model.message)),
+                dismissButton: .default(Text(LocalizedStringKey(model.dismissButtonTitle))) {
+                    viewModel.alertModel = nil
+                }
+            )
+        }
         .onAppear {
-            Task {
-                await viewModel.loadMovies(by: genre.id)
-            }
+            viewModel.genreIdSubject.send(genre.id)
         }
     }
 }
