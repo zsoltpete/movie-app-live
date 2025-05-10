@@ -6,7 +6,7 @@ protocol GenreSectionViewModelProtocol: ObservableObject {
     var genres: [Genre] { get }
 }
 
-class GenreSectionViewModel: GenreSectionViewModelProtocol, ErrorPrentable {
+class GenreSectionViewModel: GenreSectionViewModelProtocol, ErrorPresentable {
     @Published var genres: [Genre] = []
     @Published var alertModel: AlertModel? = nil
     
@@ -28,7 +28,7 @@ class GenreSectionViewModel: GenreSectionViewModelProtocol, ErrorPrentable {
             })
             .sink { completion in
                 if case let .failure(error) = completion {
-                    self.alertModel = self.toAlerModel(error)
+                    self.alertModel = self.toAlertModel(error)
                 }
             } receiveValue: { genres in
                 self.genres = genres

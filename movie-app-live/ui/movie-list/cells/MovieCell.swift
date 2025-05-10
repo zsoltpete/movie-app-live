@@ -73,6 +73,7 @@ struct MovieCell: View {
                            duration: "1h 34m",
                            imageUrl: nil,
                            rating: 1.0,
-                           voteCount: 1000)
+                           voteCount: 1000
+                        )
     )
 }

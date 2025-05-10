@@ -1,25 +1,11 @@
 //
-//  MoviwResponse.swift
+//  MovieDetailResponse.swift
 //  movie-app-live
 //
-//  Created by Zsolt Pete on 2025. 04. 15..
+//  Created by Zsolt Pete on 2025. 05. 09..
 //
 
-struct MoviePageResponse: Decodable {
-    let page: Int
-    let results: [MovieResponse]
-    let totalPages: Int
-    let totalResults: Int
-
-    enum CodingKeys: String, CodingKey {
-        case page
-        case results
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
-    }
-}
-
-struct MovieResponse: Decodable {
+struct MovieDetailResponse: Decodable {
     let id: Int
     let title: String
     let releaseDate: String?
@@ -27,6 +13,11 @@ struct MovieResponse: Decodable {
     let voteAverage: Double?
     let voteCount: Int?
     let popularity: Double
+    let adult: Bool
+    let genres: [GenreResponse]
+    let runtime: Int
+    let spokenLanguages: [SpokenLanguageResponse]
+    let overview: String
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,5 +27,10 @@ struct MovieResponse: Decodable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case popularity
+        case adult
+        case genres
+        case runtime
+        case spokenLanguages = "spoken_languages"
+        case overview
     }
 }

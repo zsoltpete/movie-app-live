@@ -1,17 +1,17 @@
 //
-//  ErrorPrentable.swift
+//  ErrorPresentable.swift
 //  movie-app-live
 //
 //  Created by Zsolt Pete on 2025. 05. 06..
 //
 
 
-protocol ErrorPrentable {
-    func toAlerModel(_ error: Error) -> AlertModel
+protocol ErrorPresentable {
+    func toAlertModel(_ error: Error) -> AlertModel
 }
 
-extension ErrorPrentable {
-    func toAlerModel(_ error: Error) -> AlertModel {
+extension ErrorPresentable {
+    func toAlertModel(_ error: Error) -> AlertModel {
         guard let error = error as? MovieError else {
             return AlertModel(
                 title: "unexpected.error.title",
@@ -30,6 +30,12 @@ extension ErrorPrentable {
             return AlertModel(
                 title: "Client Error",
                 message: error.localizedDescription,
+                dismissButtonTitle: "button.close.text"
+            )
+        case .mappingError(let message):
+            return AlertModel(
+                title: "Mapping Error",
+                message: message,
                 dismissButtonTitle: "button.close.text"
             )
         default:

@@ -13,3 +13,12 @@
 "unexpected.error.title" = "Unexpected Error";
 "unexpected.error.message" = "Something went wrong. Please try again later";
 "favoriteMovies.title" = "Favorites";
+"detail.rate.button" = "Rate this movie";
+"detail.imdb.button" = "Visit at IMDB";
+"detail.releaseDate" = "Release Date";
+"detail.runtime" = "Runtime";
+"detail.language" = "Language";
+"detail.overview" = "Synopsis";
+"available" = "Available";
+"unavailable" = "Unavailable";
+
