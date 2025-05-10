@@ -18,6 +18,7 @@ protocol ReactiveMoviesServiceProtocol {
     func fetchTV(req: FetchMediaListRequest) -> AnyPublisher<[MediaItem], MovieError>
     func fetchFavoriteMovies(req: FetchFavoriteMovieRequest) -> AnyPublisher<[MediaItem], MovieError>
     func addFavoriteMovie(req: AddFavoriteRequest) -> AnyPublisher<AddFavoriteResponse, MovieError>
+    func fetchMovieDetail(req: FetchDetailRequest) -> AnyPublisher<MediaItemDetail, MovieError>
 }
 
 class ReactiveMoviesService: ReactiveMoviesServiceProtocol {
@@ -73,6 +74,14 @@ class ReactiveMoviesService: ReactiveMoviesServiceProtocol {
         )
     }
     
+    func fetchMovieDetail(req: FetchDetailRequest) -> AnyPublisher<MediaItemDetail, MovieError> {
+        requestAndTransform(
+            target: MultiTarget(MoviesApi.fetchMovieDetail(req: req)),
+            decodeTo: MovieDetailResponse.self,
+            transform: { MediaItemDetail(dto: $0) }
+        )
+    }
+    
     //TODO: Reafctorn and create a domain model to AddFavoriteResponse
     func addFavoriteMovie(req: AddFavoriteRequest) -> AnyPublisher<AddFavoriteResponse, MovieError> {
         requestAndTransform(
@@ -100,7 +109,7 @@ class ReactiveMoviesService: ReactiveMoviesServiceProtocol {
                             let output = transform(decoded)
                             future(.success(output))
                         } catch {
-                            future(.failure(MovieError.unexpectedError))
+                            future(.failure(MovieError.mappingError(message: error.localizedDescription)))
                         }
                     case 400..<500:
                         future(.failure(MovieError.clientError))

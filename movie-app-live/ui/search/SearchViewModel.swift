@@ -7,7 +7,7 @@ protocol SearchViewModelProtocol: ObservableObject {
     var searchText: String { get set }
 }
 
-class SearchViewModel: SearchViewModelProtocol, ErrorPrentable {
+class SearchViewModel: SearchViewModelProtocol, ErrorPresentable {
     @Published var movies: [MediaItem] = []
     @Published var searchText: String = ""
     @Published var alertModel: AlertModel? = nil
@@ -33,7 +33,7 @@ class SearchViewModel: SearchViewModelProtocol, ErrorPrentable {
             }
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {
-                    self?.alertModel = self?.toAlerModel(error)
+                    self?.alertModel = self?.toAlertModel(error)
                 }
             } receiveValue: { [weak self] movies in
                 self?.movies = movies

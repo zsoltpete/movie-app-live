@@ -6,7 +6,7 @@ protocol MovieListViewModelProtocol: ObservableObject {
     var movies: [MediaItem] { get }
 }
 
-class MovieListViewModel: MovieListViewModelProtocol, ErrorPrentable {
+class MovieListViewModel: MovieListViewModelProtocol, ErrorPresentable {
     @Published var movies: [MediaItem] = []
     @Published var alertModel: AlertModel? = nil
     
@@ -24,7 +24,7 @@ class MovieListViewModel: MovieListViewModelProtocol, ErrorPrentable {
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                let request = FetchMediaListRequest(genreId: genreId)
+                let request = FetchMediaListRequest(genreId: genreId, includeAdult: true)
                 return Environments.name == .tv ?
                                                 self.service.fetchTV(req: request) :
                                                 self.service.fetchMovies(req: request)
@@ -32,7 +32,7 @@ class MovieListViewModel: MovieListViewModelProtocol, ErrorPrentable {
             }
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {
-                    self?.alertModel = self?.toAlerModel(error)
+                    self?.alertModel = self?.toAlertModel(error)
                 }
             } receiveValue: { [weak self] movies in
                 self?.movies = movies

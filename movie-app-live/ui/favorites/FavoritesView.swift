@@ -18,17 +18,9 @@ struct FavoritesView: View {
             }
             .navigationTitle("favoriteMovies.title")
         }
-        .alert(item: $viewModel.alertModel) { model in
-            
-            Alert(
-                title: Text(LocalizedStringKey(model.title)),
-                message: Text(LocalizedStringKey(model.message)),
-                primaryButton: .default(Text(LocalizedStringKey(model.dismissButtonTitle))) {
-                    
-                }, secondaryButton: .destructive(Text(LocalizedStringKey(model.dismissButtonTitle))) {
-                    
-                }
-            )
+        .showAlert(model: $viewModel.alertModel)
+        .onAppear {
+            viewModel.viewLoaded.send(())
         }
     }
 }
