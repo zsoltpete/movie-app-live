@@ -20,6 +20,7 @@ struct MediaItemDetail: Identifiable {
     let adult: Bool
     let genres: [String]
     let spokenLanguages: String
+    let productionCompanies: [ProductionCompany]
     
     init() {
         self.id = 0
@@ -34,6 +35,7 @@ struct MediaItemDetail: Identifiable {
         self.adult = false
         self.genres = []
         self.spokenLanguages = ""
+        self.productionCompanies = []
     }
     
     init(id: Int, title: String,
@@ -46,7 +48,8 @@ struct MediaItemDetail: Identifiable {
          popularity: Double = 0,
          adult: Bool = false,
          genres: [String] = [],
-         spokenLanguages: String = ""
+         spokenLanguages: String = "",
+         productionCompanies: [ProductionCompany] = []
     ) {
         self.id = id
         self.title = title
@@ -60,6 +63,7 @@ struct MediaItemDetail: Identifiable {
         self.adult = adult
         self.genres = genres
         self.spokenLanguages = spokenLanguages
+        self.productionCompanies = productionCompanies
     }
     
     init(dto: MovieDetailResponse) {
@@ -87,6 +91,8 @@ struct MediaItemDetail: Identifiable {
         self.spokenLanguages = dto.spokenLanguages
             .map({ $0.englishName })
             .joined(separator: ", ")
+        self.productionCompanies = dto.productionCompanies
+            .map({ ProductionCompany(dto: $0)})
     }
     
     var genreList: String {

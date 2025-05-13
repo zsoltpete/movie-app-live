@@ -17,6 +17,10 @@ struct DetailView: View {
             viewModel.mediaItemDetail
         }
         
+        var credits: [CastMember] {
+            viewModel.credits
+        }
+        
         return ScrollView {
             VStack(alignment: .leading, spacing: LayoutConst.largePadding) {
                 AsyncImage(url: mediaItemDetail.imageUrl) { phase in
@@ -79,16 +83,20 @@ struct DetailView: View {
                         .font(Fonts.paragraph)
                         .lineLimit(nil)
                 }
-
+                ParticipantScrollView(title: "detail.publishers", participants: mediaItemDetail.productionCompanies)
+                
+                ParticipantScrollView(title: "detail.cast", participants: credits)
             }
             .padding(.horizontal, LayoutConst.maxPadding)
+            .padding(.bottom, LayoutConst.largePadding)
+
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    
+                    viewModel.favoriteButtonTapped.send(())
                 }) {
-                    Image(.favorite)
+                    Image(viewModel.isFavorite ? .favorite : .nonfavorite)
                         .resizable()
                         .frame(height: 30.0)
                         .frame(width: 30.0)
@@ -96,61 +104,6 @@ struct DetailView: View {
             }
         }
         .showAlert(model: $viewModel.alertModel)
-        .onAppear {
-            viewModel.mediaItemIdSubject.send(mediaItem.id)
-        }
-    }
-}
-
-struct DetailView2: View {
-    @StateObject private var viewModel = DetailViewModel2()
-    let mediaItem: MediaItem
-    
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 30) {
-                if let posterPath = viewModel.mediaItem.imageUrl {
-                    AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 185)
-                            .clipShape(RoundedRectangle(cornerRadius: 30))
-                    } placeholder: {
-                        ProgressView()
-                            .frame(height: 185)
-                    }
-                }
-                
-                HStack {
-                    MovieLabel(type: .rating(viewModel.mediaItem.rating))
-                    MovieLabel(type: .voteCount(viewModel.mediaItem.voteCount))
-                    MovieLabel(type: .popularity(viewModel.mediaItem.popularity))
-                }
-                
-                HStack {
-                    StyledButton(style: .outlined, title: "detail.rate.button") {
-                        
-                    }
-                    Spacer()
-                    StyledButton(style: .filled, title: "detail.imdb.button") {
-                        
-                    }
-                }
-            }
-            .padding()
-        }
-        .navigationTitle(viewModel.mediaItem.title)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    viewModel.favoriteButtonTapped.send(())
-                }) {
-                    Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(viewModel.isFavorite ? .red : .gray)
-                }
-            }
-        }
         .onAppear {
             viewModel.mediaItemIdSubject.send(mediaItem.id)
         }

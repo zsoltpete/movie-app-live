@@ -3,11 +3,11 @@ import Combine
 import InjectPropertyWrapper
 
 protocol FavoritesViewModelProtocol: ObservableObject {
-    var movies: [MediaItem] { get }
+    var mediaItems: [MediaItem] { get }
 }
 
 class FavoritesViewModel: FavoritesViewModelProtocol, ErrorPresentable {
-    @Published var movies: [MediaItem] = []
+    @Published var mediaItems: [MediaItem] = []
     @Published var alertModel: AlertModel? = nil
     
     private var cancellables = Set<AnyCancellable>()
@@ -17,17 +17,12 @@ class FavoritesViewModel: FavoritesViewModelProtocol, ErrorPresentable {
     @Inject
     private var service: ReactiveMoviesServiceProtocol
     
+    @Inject
+    private var favoriteMediaStore: FavoriteMediaStoreProtocol
+    
     init() {
         
-        viewLoaded
-            .flatMap { [weak self] _ -> AnyPublisher<[MediaItem], MovieError> in
-                guard let self = self else {
-                    preconditionFailure("There is no self")
-                }
-                let request = FetchFavoriteMovieRequest()
-                
-                return service.fetchFavoriteMovies(req: request)
-            }
+        favoriteMediaStore.mediaItems
             .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
@@ -36,8 +31,8 @@ class FavoritesViewModel: FavoritesViewModelProtocol, ErrorPresentable {
                 case .finished:
                     break
                 }
-            } receiveValue: { [weak self]movies in
-                self?.movies = movies
+            } receiveValue: { [weak self]mediaItems in
+                self?.mediaItems = mediaItems
             }
             .store(in: &cancellables)
     }
