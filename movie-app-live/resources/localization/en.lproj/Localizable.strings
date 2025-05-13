@@ -19,6 +19,8 @@
 "detail.runtime" = "Runtime";
 "detail.language" = "Language";
 "detail.overview" = "Synopsis";
+"detail.publishers" = "Publisher and companies";
+"detail.cast" = "Cast";
 "available" = "Available";
 "unavailable" = "Unavailable";
 
