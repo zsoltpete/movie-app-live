@@ -25,7 +25,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
     private var service: ReactiveMoviesServiceProtocol
     
     @Inject
-    private var favoriteMediaStore: FavoriteMediaStoreProtocol
+    private var mediaItemStore: MediaItemStoreProtocol
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -63,7 +63,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 }
                 self.mediaItemDetail = details
                 self.credits = credits
-                self.isFavorite = self.favoriteMediaStore.isFavoriteMediaItem(withId: details.id)
+                self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
             }
             .store(in: &cancellables)
 
@@ -91,63 +91,13 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 if result.success {
                     self.isFavorite = isFavorite
                     if isFavorite {
-                        //self.favoriteMediaStore.addFavoriteMediaItem(self.mediaItemDetail)
+                        self.mediaItemStore.saveMediaItems([MediaItem(detail: self.mediaItemDetail)])
                     } else {
-                        self.favoriteMediaStore.removeFavoriteMediaItem(withId: self.mediaItemDetail.id)
+                        self.mediaItemStore.deleteMediaItem(withId: self.mediaItemDetail.id)
                     }
                 }
             }
             .store(in: &cancellables)
     }
     
-}
-
-class DetailViewModel2: DetailViewModelProtocol, ErrorPresentable {
-    @Published var alertModel: AlertModel? = nil
-    @Published var mediaItem: MediaItemDetail = MediaItemDetail()
-    @Published var isFavorite: Bool = false
-    
-    let mediaItemIdSubject = PassthroughSubject<Int, Never>()
-    let favoriteButtonTapped = PassthroughSubject<Void, Never>()
-    
-    private var cancellables = Set<AnyCancellable>()
-    
-    @Inject
-    private var service: ReactiveMoviesServiceProtocol
-    
-    init() {
-        mediaItemIdSubject
-            .flatMap { [weak self] mediaItemId -> AnyPublisher<MediaItemDetail, MovieError> in
-                guard let self = self else {
-                    preconditionFailure("There is no self")
-                }
-                let request = FetchDetailRequest(mediaId: mediaItemId)
-                return self.service.fetchMovieDetail(req: request)
-            }
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.alertModel = self?.toAlertModel(error)
-                }
-            } receiveValue: { [weak self] mediaItem in
-                self?.mediaItem = mediaItem
-            }
-            .store(in: &cancellables)
-        
-        favoriteButtonTapped
-            .flatMap { [weak self] mediaItemId -> AnyPublisher<EditFavoriteResult, MovieError> in
-                guard let self = self else {
-                    preconditionFailure("There is no self")
-                }
-                let request = EditFavoriteRequest(movieId: mediaItem.id, isFavorite: true)
-                return service.editFavoriteMovie(req: request)
-            }
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.alertModel = self?.toAlertModel(error)
-                }
-            } receiveValue: { [weak self] mediaItem in
-                self?.isFavorite.toggle()
-            }
-            .store(in: &cancellables)
-    }
 }

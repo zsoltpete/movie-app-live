@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54002E452DD62D3300E83EEA /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E442DD62D3300E83EEA /* Reachability */; };
+		54002E5C2DD7549D00E83EEA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5B2DD7549D00E83EEA /* SDWebImageSwiftUI */; };
+		54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5E2DD87F5E00E83EEA /* RealmSwift */; };
+		54002E602DD89D3900E83EEA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5E2DD87F5E00E83EEA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		545E96612DB68C8E00DC8DCC /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 545E96602DB68C8E00DC8DCC /* Quick */; };
 		545E96642DB68C9C00DC8DCC /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 545E96632DB68C9C00DC8DCC /* Nimble */; };
 		547C0AC92DAE26A700D04FDB /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 547C0AC82DAE26A700D04FDB /* CombineMoya */; };
@@ -34,6 +38,20 @@
 			remoteInfo = "movie-app-live";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		54002E472DD62EC800E83EEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				54002E602DD89D3900E83EEA /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5454C3FA2DA52BF6009B0231 /* movie-app-live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-app-live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +96,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54002E5C2DD7549D00E83EEA /* SDWebImageSwiftUI in Frameworks */,
 				548899612DAE859B009E26EB /* InjectPropertyWrapper in Frameworks */,
+				54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */,
+				54002E452DD62D3300E83EEA /* Reachability in Frameworks */,
 				547C0ACB2DAE26A700D04FDB /* Moya in Frameworks */,
 				547C0AC92DAE26A700D04FDB /* CombineMoya in Frameworks */,
 				5488995E2DAE8548009E26EB /* Swinject in Frameworks */,
@@ -146,6 +167,7 @@
 				5454C3F62DA52BF6009B0231 /* Sources */,
 				5454C3F72DA52BF6009B0231 /* Frameworks */,
 				5454C3F82DA52BF6009B0231 /* Resources */,
+				54002E472DD62EC800E83EEA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +182,9 @@
 				547C0ACA2DAE26A700D04FDB /* Moya */,
 				5488995D2DAE8548009E26EB /* Swinject */,
 				548899602DAE859B009E26EB /* InjectPropertyWrapper */,
+				54002E442DD62D3300E83EEA /* Reachability */,
+				54002E5B2DD7549D00E83EEA /* SDWebImageSwiftUI */,
+				54002E5E2DD87F5E00E83EEA /* RealmSwift */,
 			);
 			productName = "movie-app-live";
 			productReference = 5454C3FA2DA52BF6009B0231 /* movie-app-live.app */;
@@ -256,6 +281,9 @@
 				545E965F2DB68C8E00DC8DCC /* XCRemoteSwiftPackageReference "Quick" */,
 				545E96622DB68C9C00DC8DCC /* XCRemoteSwiftPackageReference "Nimble" */,
 				54D4EAB72DB6997000FD6580 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				54002E432DD62D3300E83EEA /* XCRemoteSwiftPackageReference "Reachability" */,
+				54002E5A2DD7549D00E83EEA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5454C3FB2DA52BF6009B0231 /* Products */;
@@ -1802,6 +1830,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		54002E432DD62D3300E83EEA /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		54002E5A2DD7549D00E83EEA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+		54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		545E965F2DB68C8E00DC8DCC /* XCRemoteSwiftPackageReference "Quick" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Quick/Quick";
@@ -1853,6 +1905,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		54002E442DD62D3300E83EEA /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54002E432DD62D3300E83EEA /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		54002E5B2DD7549D00E83EEA /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54002E5A2DD7549D00E83EEA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		54002E5E2DD87F5E00E83EEA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		545E96602DB68C8E00DC8DCC /* Quick */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 545E965F2DB68C8E00DC8DCC /* XCRemoteSwiftPackageReference "Quick" */;
