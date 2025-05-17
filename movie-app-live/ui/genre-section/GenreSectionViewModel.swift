@@ -16,7 +16,7 @@ class GenreSectionViewModel: GenreSectionViewModelProtocol, ErrorPresentable {
     private var service: ReactiveMoviesServiceProtocol
     
     @Inject
-    private var favoriteMediaStore: FavoriteMediaStoreProtocol
+    private var mediaItemRepository: MediaItemStoreProtocol
     
     init() {
         let request = FetchGenreRequest()
@@ -38,20 +38,5 @@ class GenreSectionViewModel: GenreSectionViewModelProtocol, ErrorPresentable {
             }
             .store(in: &cancellables)
         
-        let favoriteRequest = FetchFavoriteMovieRequest()
-        
-        service.fetchFavoriteMovies(req: favoriteRequest)
-            .receive(on: RunLoop.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    self.alertModel = self.toAlertModel(error)
-                case .finished:
-                    break
-                }
-            } receiveValue: { [weak self]movies in
-                self?.favoriteMediaStore.addFavoriteMediaItems(movies)
-            }
-            .store(in: &cancellables)
     }
 }

@@ -23,32 +23,10 @@ struct DetailView: View {
         
         return ScrollView {
             VStack(alignment: .leading, spacing: LayoutConst.largePadding) {
-                AsyncImage(url: mediaItemDetail.imageUrl) { phase in
-                    switch phase {
-                    case .empty:
-                        ZStack {
-                            Color.gray.opacity(0.3)
-                            ProgressView()
-                        }
-
-                    case let .success(image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-
-                    case .failure(let error):
-                        ZStack {
-                            Color.red.opacity(0.3)
-                            Image(systemName: "photo")
-                                .foregroundColor(.white)
-                        }
-                    @unknown default:
-                        EmptyView()
-                    }
-                }
-                .frame(height: 180)
-                .frame(maxWidth: .infinity)
-                .cornerRadius(30)
+                LoadImageView(url: mediaItemDetail.imageUrl)
+                    .frame(height: 180)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(30)
                 
                 HStack(spacing: 12.0) {
                     MovieLabel(type: .rating(mediaItemDetail.rating))
@@ -70,9 +48,9 @@ struct DetailView: View {
                 }
                 
                 HStack {
-                    StyledButton(style: .outlined, title: "detail.rate.button")
+                    StyledButton(style: .outlined, action: .simple, title: "detail.rate.button")
                     Spacer()
-                    StyledButton(style: .filled, title: "detail.imdb.button")
+                    StyledButton(style: .filled, action: .link(mediaItemDetail.imdbURL), title: "detail.imdb.button")
                 }
                 
                 VStack(alignment: .leading, spacing: 12.0) {

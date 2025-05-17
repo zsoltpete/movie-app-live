@@ -17,12 +17,15 @@ class FavoritesViewModel: FavoritesViewModelProtocol, ErrorPresentable {
     @Inject
     private var service: ReactiveMoviesServiceProtocol
     
-    @Inject
-    private var favoriteMediaStore: FavoriteMediaStoreProtocol
-    
     init() {
         
-        favoriteMediaStore.mediaItems
+        viewLoaded
+            .flatMap { [weak self]_ -> AnyPublisher<[MediaItem], MovieError> in
+                guard let self = self else {
+                    preconditionFailure("There is no self")
+                }
+                return self.service.fetchFavoriteMovies(req: FetchFavoriteMovieRequest(), fromLocal: false)
+            }
             .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {

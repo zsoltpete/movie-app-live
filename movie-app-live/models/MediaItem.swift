@@ -70,4 +70,15 @@ struct MediaItem: Identifiable {
         
     }
     
+    init(detail: MediaItemDetail) {
+        self.id = detail.id
+        self.title = detail.title
+        self.year = detail.year
+        self.duration = "1h 25min"
+        self.imageUrl = detail.imageUrl
+        self.rating = detail.rating
+        self.voteCount = detail.voteCount
+        
+    }
+    
 }

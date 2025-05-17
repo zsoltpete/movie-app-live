@@ -23,3 +23,4 @@
 "detail.cast" = "Cast";
 "available" = "Available";
 "unavailable" = "Unavailable";
+"noInternet" = "No internet connection";
