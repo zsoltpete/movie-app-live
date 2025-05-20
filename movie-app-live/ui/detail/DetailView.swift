@@ -10,9 +10,9 @@ import SwiftUI
 struct DetailView: View {
     @StateObject private var viewModel = DetailViewModel()
     let mediaItem: MediaItem
+    @Environment(\.dismiss) private var dismiss: DismissAction
     
     var body: some View {
-        
         var mediaItemDetail: MediaItemDetail {
             viewModel.mediaItemDetail
         }
@@ -38,17 +38,16 @@ struct DetailView: View {
                 
                 Text(viewModel.mediaItemDetail.genreList)
                     .font(Fonts.paragraph)
-                Text(viewModel.mediaItemDetail.title)
-                    .font(Fonts.detailsTitle)
-                
-                HStack(spacing: LayoutConst.normalPadding) {
-                    DetailLabel(title: "detail.releaseDate", desc: mediaItemDetail.year)
-                    DetailLabel(title: "detail.runtime", desc: "\(mediaItemDetail.runtime)")
-                    DetailLabel(title: "detail.language", desc: mediaItemDetail.spokenLanguages)
-                }
+                MediaItemHeaderView(title: viewModel.mediaItemDetail.title,
+                                    year: mediaItemDetail.year,
+                                    runtime: "\(mediaItemDetail.runtime)",
+                                    spokenLanguages: mediaItemDetail.spokenLanguages)
                 
                 HStack {
-                    StyledButton(style: .outlined, action: .simple, title: "detail.rate.button")
+                    NavigationLink(destination: AddReviewView(mediaItemDetail: mediaItemDetail)) {
+                        StyledButton(style: .outlined, action: .simple, title: "detail.rate.button")
+                    }
+                    
                     Spacer()
                     StyledButton(style: .filled, action: .link(mediaItemDetail.imdbURL), title: "detail.imdb.button")
                 }
