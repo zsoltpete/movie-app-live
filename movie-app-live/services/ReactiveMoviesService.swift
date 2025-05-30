@@ -11,7 +11,7 @@ import InjectPropertyWrapper
 import Combine
 import Alamofire
 
-protocol ReactiveMoviesServiceProtocol {
+protocol MovieRepository {
     func fetchGenres(req: FetchGenreRequest) -> AnyPublisher<[Genre], MovieError>
     func fetchTVGenres(req: FetchGenreRequest) -> AnyPublisher<[Genre], MovieError>
     func searchMovies(req: SearchMovieRequest) -> AnyPublisher<[MediaItem], MovieError>
@@ -23,7 +23,7 @@ protocol ReactiveMoviesServiceProtocol {
     func fetchMovieCredits(req: FetchMovieCreditsRequest) -> AnyPublisher<[CastMember], MovieError>
 }
 
-class ReactiveMoviesService: ReactiveMoviesServiceProtocol {
+class MovieRepositoryImpl: MovieRepository {
     
     @Inject
     var moya: MoyaProvider<MultiTarget>!

@@ -18,7 +18,7 @@ class SearchViewModel: SearchViewModelProtocol, ErrorPresentable {
     private var cancellables = Set<AnyCancellable>()
     
     @Inject
-    private var service: ReactiveMoviesServiceProtocol
+    private var repository: MovieRepository
     
     init() {
         startSearch
@@ -29,7 +29,7 @@ class SearchViewModel: SearchViewModelProtocol, ErrorPresentable {
                     preconditionFailure("There is no self")
                 }
                 let request = SearchMovieRequest(query: self.searchText)
-                return self.service.searchMovies(req: request)
+                return self.repository.searchMovies(req: request)
             }
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {

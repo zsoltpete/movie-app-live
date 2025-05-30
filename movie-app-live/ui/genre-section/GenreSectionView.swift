@@ -9,9 +9,10 @@ import SwiftUI
 import InjectPropertyWrapper
 
 struct GenreSectionView: View {
-    @StateObject private var viewModel = GenreSectionViewModel()
+    @StateObject private var viewModel = GenreSectionViewModelImpl()
     
     var body: some View {
+        let title = Environments.name == .tv ? "TV" : "genreSection.title".localized()
         NavigationView {
             List(viewModel.genres) { genre in
                 ZStack {
@@ -26,10 +27,14 @@ struct GenreSectionView: View {
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
-            .navigationTitle(Environments.name == .tv ? "TV" : "genreSection.title")
+            .navigationTitle(title)
             .accessibilityLabel("testCollectionView")
         }
         .showAlert(model: $viewModel.alertModel)
+        .onAppear{
+            viewModel.loadGenres()
+            viewModel.genresAppeared()
+        }
     }
 }
 

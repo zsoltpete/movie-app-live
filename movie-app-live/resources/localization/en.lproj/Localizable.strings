@@ -26,3 +26,12 @@
 "noInternet" = "No internet connection";
 "addReview.subTitle" = "Give it  a honest review";
 "addReview.buttonTitle" = "Send my review";
+
+"settings.title" = "Settings";
+"settings.chooseLanguage" = "Choose Language";
+"settings.chooseTheme" = "Choose Theme";
+"settings.lang.english" = "English";
+"settings.lang.russian" = "Russian";
+"settings.lang.hungarian" = "Hungarian";
+"settings.theme.light" = "Light Mode";
+"settings.theme.dark" = "Dark Mode";

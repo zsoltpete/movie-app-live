@@ -19,7 +19,7 @@ struct FavoritesView: View {
                 .padding(.horizontal, LayoutConst.normalPadding)
                 .padding(.top, LayoutConst.normalPadding)
             }
-            .navigationTitle("favoriteMovies.title")
+            .navigationTitle("favoriteMovies.title".localized())
         }
         .showAlert(model: $viewModel.alertModel)
         .onAppear {

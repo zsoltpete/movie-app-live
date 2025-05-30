@@ -45,24 +45,24 @@ struct DetailView: View {
                 
                 HStack {
                     NavigationLink(destination: AddReviewView(mediaItemDetail: mediaItemDetail)) {
-                        StyledButton(style: .outlined, action: .simple, title: "detail.rate.button")
+                        StyledButton(style: .outlined, action: .simple, title: "detail.rate.button".localized())
                     }
                     
                     Spacer()
-                    StyledButton(style: .filled, action: .link(mediaItemDetail.imdbURL), title: "detail.imdb.button")
+                    StyledButton(style: .filled, action: .link(mediaItemDetail.imdbURL), title: "detail.imdb.button".localized())
                 }
                 
                 VStack(alignment: .leading, spacing: 12.0) {
-                    Text(LocalizedStringKey("detail.overview"))
+                    Text("detail.overview".localized())
                         .font(Fonts.overviewText)
                     
                     Text(mediaItemDetail.overview)
                         .font(Fonts.paragraph)
                         .lineLimit(nil)
                 }
-                ParticipantScrollView(title: "detail.publishers", participants: mediaItemDetail.productionCompanies)
+                ParticipantScrollView(title: "detail.publishers".localized(), participants: mediaItemDetail.productionCompanies)
                 
-                ParticipantScrollView(title: "detail.cast", participants: credits)
+                ParticipantScrollView(title: "detail.cast".localized(), participants: credits)
             }
             .padding(.horizontal, LayoutConst.maxPadding)
             .padding(.bottom, LayoutConst.largePadding)

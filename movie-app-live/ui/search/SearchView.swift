@@ -13,7 +13,7 @@ struct SearchView: View {
                     
                     TextField("",
                               text: $viewModel.searchText,
-                              prompt: Text("search.textfield.placeholder")
+                              prompt: Text("search.textfield.placeholder".localized())
                                             .foregroundStyle(.invertedMain)
                     )
                         .textFieldStyle(PlainTextFieldStyle())
