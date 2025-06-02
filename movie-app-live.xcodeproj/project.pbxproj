@@ -17,6 +17,8 @@
 		547C0ACB2DAE26A700D04FDB /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 547C0ACA2DAE26A700D04FDB /* Moya */; };
 		5488995E2DAE8548009E26EB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5488995D2DAE8548009E26EB /* Swinject */; };
 		548899612DAE859B009E26EB /* InjectPropertyWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 548899602DAE859B009E26EB /* InjectPropertyWrapper */; };
+		54B1DFAC2DE9F70900687E35 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 54B1DFAB2DE9F70900687E35 /* Lottie */; };
+		54B1DFB82DE9FFFC00687E35 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 54B1DFB72DE9FFFC00687E35 /* Shimmer */; };
 		54D4EAB92DB6997000FD6580 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 54D4EAB82DB6997000FD6580 /* ViewInspector */; };
 		54D4EABC2DB6997C00FD6580 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 54D4EABB2DB6997C00FD6580 /* Quick */; };
 		54D4EABE2DB6997C00FD6580 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 54D4EABD2DB6997C00FD6580 /* Nimble */; };
@@ -99,10 +101,12 @@
 				54002E5C2DD7549D00E83EEA /* SDWebImageSwiftUI in Frameworks */,
 				548899612DAE859B009E26EB /* InjectPropertyWrapper in Frameworks */,
 				54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */,
+				54B1DFB82DE9FFFC00687E35 /* Shimmer in Frameworks */,
 				54002E452DD62D3300E83EEA /* Reachability in Frameworks */,
 				547C0ACB2DAE26A700D04FDB /* Moya in Frameworks */,
 				547C0AC92DAE26A700D04FDB /* CombineMoya in Frameworks */,
 				5488995E2DAE8548009E26EB /* Swinject in Frameworks */,
+				54B1DFAC2DE9F70900687E35 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +189,8 @@
 				54002E442DD62D3300E83EEA /* Reachability */,
 				54002E5B2DD7549D00E83EEA /* SDWebImageSwiftUI */,
 				54002E5E2DD87F5E00E83EEA /* RealmSwift */,
+				54B1DFAB2DE9F70900687E35 /* Lottie */,
+				54B1DFB72DE9FFFC00687E35 /* Shimmer */,
 			);
 			productName = "movie-app-live";
 			productReference = 5454C3FA2DA52BF6009B0231 /* movie-app-live.app */;
@@ -285,6 +291,8 @@
 				54002E432DD62D3300E83EEA /* XCRemoteSwiftPackageReference "Reachability" */,
 				54002E5A2DD7549D00E83EEA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */,
+				54B1DFAA2DE9F70900687E35 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				54B1DFB62DE9FFFC00687E35 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5454C3FB2DA52BF6009B0231 /* Products */;
@@ -1895,6 +1903,22 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		54B1DFAA2DE9F70900687E35 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+		54B1DFB62DE9FFFC00687E35 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		54D4EAB72DB6997000FD6580 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
@@ -1950,6 +1974,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5488995F2DAE859B009E26EB /* XCRemoteSwiftPackageReference "InjectPropertyWrapper" */;
 			productName = InjectPropertyWrapper;
+		};
+		54B1DFAB2DE9F70900687E35 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54B1DFAA2DE9F70900687E35 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		54B1DFB72DE9FFFC00687E35 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54B1DFB62DE9FFFC00687E35 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 		54D4EAB82DB6997000FD6580 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;

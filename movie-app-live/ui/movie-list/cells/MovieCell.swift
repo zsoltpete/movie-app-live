@@ -5,42 +5,55 @@
 //  Created by Zsolt Pete on 2025. 04. 26..
 //
 
+import Shimmer
 import SwiftUI
 
 struct MovieCell: View {
     let movie: MediaItem
     
     var body: some View {
-        VStack(alignment: .leading, spacing: LayoutConst.smallPadding) {
-            ZStack(alignment: .topLeading) {
-                HStack(alignment: .center) {
-                    LoadImageView(url: movie.imageUrl)
-                    .frame(height: 100)
-                    .frame(maxHeight: 180)
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(12)
-                }
-                
-                HStack(spacing: 12.0) {
-                    MovieLabel(type: .rating(movie.rating))
-                    MovieLabel(type: .voteCount(movie.voteCount))
-                }
-                .padding(LayoutConst.smallPadding)
-                
+        if movie.id < 0 {
+            VStack {
+                Color.gray
             }
+            .frame(height: 100)
+            .frame(maxHeight: 180)
+            .frame(maxWidth: .infinity)
+            .cornerRadius(12)
+            .shimmering()
+        } else {
+            VStack(alignment: .leading, spacing: LayoutConst.smallPadding) {
+                ZStack(alignment: .topLeading) {
+                    HStack(alignment: .center) {
+                        LoadImageView(url: movie.imageUrl)
+                        .frame(height: 100)
+                        .frame(maxHeight: 180)
+                        .frame(maxWidth: .infinity)
+                        .cornerRadius(12)
+                    }
+                    
+                    HStack(spacing: 12.0) {
+                        MovieLabel(type: .rating(movie.rating))
+                        MovieLabel(type: .voteCount(movie.voteCount))
+                    }
+                    .padding(LayoutConst.smallPadding)
+                    
+                }
 
-            Text(movie.title)
-                .font(Fonts.subheading)
-                .lineLimit(2)
+                Text(movie.title)
+                    .font(Fonts.subheading)
+                    .lineLimit(2)
 
-            Text("\(movie.year)")
-                .font(Fonts.paragraph)
+                Text("\(movie.year)")
+                    .font(Fonts.paragraph)
 
-            Text("\(movie.duration)")
-                .font(Fonts.caption)
+                Text("\(movie.duration)")
+                    .font(Fonts.caption)
 
-            Spacer()
+                Spacer()
+            }
         }
+        
     }
 }
 

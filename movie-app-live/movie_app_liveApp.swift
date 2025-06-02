@@ -11,23 +11,14 @@ import SwiftUI
 struct movie_app_liveApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    @State var selectedTab: TabType = TabType.genre
-    
-    @AppStorage("color-scheme") var colorSchemeRawValue: String = "light"
-    
-    var colorScheme: ColorScheme {
-        if colorSchemeRawValue == "light" {
-            return .light
-        } else {
-            return .dark
-        }
-    }
+    @AppStorage("color-scheme") var colorScheme: Theme = .light
     
     var body: some Scene {
         WindowGroup {
-            RootView(selectedTab: selectedTab)
-                .preferredColorScheme(colorScheme)
+            SplashView()
+                .preferredColorScheme(ColorScheme(theme: colorScheme))
         }
+        
     }
     
     

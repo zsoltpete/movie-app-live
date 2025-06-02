@@ -7,12 +7,16 @@ protocol SettingsViewModelProtocol: ObservableObject {
 
 class SettingsViewModel: SettingsViewModelProtocol {
     @Published var selectedLanguage: String = Bundle.getLangCode()
-    @Published var selectedTheme: ColorScheme = .light
+    @Published var selectedTheme: Theme = .light {
+        didSet {
+            UserDefaults.standard.set(selectedTheme.rawValue, forKey: "color-scheme")
+        }
+    }
     
-    @AppStorage("color-scheme") var colorSchemeRawValue: String = "light"
     
     init() {
-        self.selectedTheme = ColorScheme(colorSchemeRawValue)
+        let storedThem = UserDefaults.standard.string(forKey: "color-scheme")
+        self.selectedTheme = Theme(rawValue: storedThem ?? "") ?? .light
     }
     
     func changeSelectedLanguge(_ language: String) {
@@ -20,9 +24,8 @@ class SettingsViewModel: SettingsViewModelProtocol {
         Bundle.setLanguage(lang: language)
     }
     
-    func changeTheme(_ theme: ColorScheme) {
+    func changeTheme(_ theme: Theme) {
         self.selectedTheme = theme
-        colorSchemeRawValue = theme == .light ? "light" : "dark"
     }
     
 }

@@ -7,11 +7,13 @@
 
 import InjectPropertyWrapper
 import Combine
+import Foundation
 
 protocol GenreSectionUseCase {
     var showAppearPopup: AnyPublisher<Bool, Never> { get }
     func loadGenres() -> AnyPublisher<[Genre], MovieError>
     func genresAppeared()
+    func loadMovies(for genre: Genre) -> AnyPublisher<[MediaItem], MovieError>
 }
 
 class GenreSectionUseCaseImpl: GenreSectionUseCase {
@@ -49,5 +51,12 @@ class GenreSectionUseCaseImpl: GenreSectionUseCase {
         appearSubject.send(appearCounter)
     }
     
+    func loadMovies(for genre: Genre) -> AnyPublisher<[MediaItem], MovieError> {
+        let request = FetchMediaListRequest(genreId: genre.id, includeAdult: true)
+        return self.repository.fetchMovies(req: request)
+            .delay(for: .seconds(2), scheduler: RunLoop.main)
+            .eraseToAnyPublisher()
+                                        
+    }
     
 }

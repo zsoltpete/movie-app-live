@@ -21,7 +21,13 @@ struct GenreSectionView: View {
                     }
                     .opacity(0)
 
-                    GenreSectionCell(genre: genre)
+                    GenreSectionCell(
+                        genre: genre,
+                        movies: viewModel.movies[genre.id] ?? [],
+                        onExpand: {
+                            viewModel.loadMovies(for: genre)
+                        }
+                    )
                 }
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
