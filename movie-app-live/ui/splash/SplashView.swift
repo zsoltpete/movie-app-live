@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @State private var showRootView = false
+    @State private var showRootView = true
     @State var selectedTab: TabType = TabType.genre
     
     var body: some View {

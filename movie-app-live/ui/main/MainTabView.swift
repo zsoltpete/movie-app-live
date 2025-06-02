@@ -59,16 +59,14 @@ struct MainTabView: View {
                     Spacer()
                 }
             }
-            .padding(.top, LayoutConst.largePadding)
-            .padding(.bottom, 48.0 - safeArea().bottom)
+            .padding(.top, 24)
+            .padding(.bottom, 48)
             .background(
                 Color.tabBarBackground
                     .clipShape(RoundedCorner(radius: 30, corners: [.topLeft, .topRight]))
                     .ignoresSafeArea(edges: .bottom)
             )
-            
-            
-            
         }
+        .ignoresSafeArea()
     }
 }

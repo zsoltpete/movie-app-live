@@ -11,6 +11,7 @@
 		54002E5C2DD7549D00E83EEA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5B2DD7549D00E83EEA /* SDWebImageSwiftUI */; };
 		54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5E2DD87F5E00E83EEA /* RealmSwift */; };
 		54002E602DD89D3900E83EEA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5E2DD87F5E00E83EEA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		54272B9A2DEDE62700A81EE6 /* PullToRefreshSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54272B992DEDE62700A81EE6 /* PullToRefreshSwiftUI */; };
 		545E96612DB68C8E00DC8DCC /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 545E96602DB68C8E00DC8DCC /* Quick */; };
 		545E96642DB68C9C00DC8DCC /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 545E96632DB68C9C00DC8DCC /* Nimble */; };
 		547C0AC92DAE26A700D04FDB /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 547C0AC82DAE26A700D04FDB /* CombineMoya */; };
@@ -99,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54002E5C2DD7549D00E83EEA /* SDWebImageSwiftUI in Frameworks */,
+				54272B9A2DEDE62700A81EE6 /* PullToRefreshSwiftUI in Frameworks */,
 				548899612DAE859B009E26EB /* InjectPropertyWrapper in Frameworks */,
 				54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */,
 				54B1DFB82DE9FFFC00687E35 /* Shimmer in Frameworks */,
@@ -191,6 +193,7 @@
 				54002E5E2DD87F5E00E83EEA /* RealmSwift */,
 				54B1DFAB2DE9F70900687E35 /* Lottie */,
 				54B1DFB72DE9FFFC00687E35 /* Shimmer */,
+				54272B992DEDE62700A81EE6 /* PullToRefreshSwiftUI */,
 			);
 			productName = "movie-app-live";
 			productReference = 5454C3FA2DA52BF6009B0231 /* movie-app-live.app */;
@@ -293,6 +296,7 @@
 				54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */,
 				54B1DFAA2DE9F70900687E35 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				54B1DFB62DE9FFFC00687E35 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				54272B982DEDE62700A81EE6 /* XCRemoteSwiftPackageReference "PullToRefreshSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5454C3FB2DA52BF6009B0231 /* Products */;
@@ -1863,6 +1867,14 @@
 				kind = branch;
 			};
 		};
+		54272B982DEDE62700A81EE6 /* XCRemoteSwiftPackageReference "PullToRefreshSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shakurocom/PullToRefreshSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.5;
+			};
+		};
 		545E965F2DB68C8E00DC8DCC /* XCRemoteSwiftPackageReference "Quick" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Quick/Quick";
@@ -1944,6 +1956,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		54272B992DEDE62700A81EE6 /* PullToRefreshSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54272B982DEDE62700A81EE6 /* XCRemoteSwiftPackageReference "PullToRefreshSwiftUI" */;
+			productName = PullToRefreshSwiftUI;
 		};
 		545E96602DB68C8E00DC8DCC /* Quick */ = {
 			isa = XCSwiftPackageProductDependency;
