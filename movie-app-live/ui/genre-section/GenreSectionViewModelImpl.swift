@@ -10,6 +10,7 @@ protocol GenreSectionViewModel: ObservableObject {
 
 class GenreSectionViewModelImpl: GenreSectionViewModel, ErrorPresentable {
     @Published var genres: [Genre] = []
+    @Published var motdMovie: MediaItemDetail?
     @Published var alertModel: AlertModel? = nil
     @Published var movies: [Int: [MediaItem]] = [:]
     
@@ -67,9 +68,28 @@ class GenreSectionViewModelImpl: GenreSectionViewModel, ErrorPresentable {
                     self.alertModel = self.toAlertModel(error)
                 }
             } receiveValue: { [weak self] fetchedMovies in
-                self?.movies[genre.id] = fetchedMovies
+                guard let self = self else {
+                    return
+                }
+                self.movies[genre.id] = fetchedMovies
+                
+                if self.motdMovie == nil, let randomMovie = fetchedMovies.randomElement() {
+                    self.loadMotdMovie(movie: randomMovie)
+                }
             }
             .store(in: &cancellables)
         
     }
+    
+    func loadMotdMovie(movie: MediaItem) {
+            useCase.loadMotdMovie(movie: movie)
+                .sink { completion in
+                    if case let .failure(error) = completion {
+                        self.alertModel = self.toAlertModel(error)
+                    }
+                } receiveValue: { movie in
+                    self.motdMovie = movie
+                }
+                .store(in: &cancellables)
+        }
 }

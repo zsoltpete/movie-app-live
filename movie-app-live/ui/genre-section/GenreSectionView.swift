@@ -14,23 +14,31 @@ struct GenreSectionView: View {
     var body: some View {
         let title = Environments.name == .tv ? "TV" : "genreSection.title".localized()
         NavigationView {
-            List(viewModel.genres) { genre in
-                ZStack {
-                    NavigationLink(destination: MovieListView(genre: genre)) {
-                        EmptyView()
-                    }
-                    .opacity(0)
-
-                    GenreSectionCell(
-                        genre: genre,
-                        movies: viewModel.movies[genre.id] ?? [],
-                        onExpand: {
-                            viewModel.loadMovies(for: genre)
-                        }
-                    )
+            List {
+                if let motd = viewModel.motdMovie {
+                    GenreMotdCell(mediaItem: motd)
+                        .background(Color.clear)
+                        .listStyle(.plain)
                 }
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
+                
+                ForEach(viewModel.genres) { genre in
+                    ZStack {
+                        NavigationLink(destination: MovieListView(genre: genre)) {
+                            EmptyView()
+                        }
+                        .opacity(0)
+                        
+                        GenreSectionCell(
+                            genre: genre,
+                            movies: viewModel.movies[genre.id] ?? [],
+                            onExpand: {
+                                viewModel.loadMovies(for: genre)
+                            }
+                        )
+                    }
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                }
             }
             .listStyle(.plain)
             .navigationTitle(title)

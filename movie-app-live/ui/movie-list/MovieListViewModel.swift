@@ -25,18 +25,28 @@ class MovieListViewModel: MovieListViewModelProtocol, ErrorPresentable {
     init() {
         
         Publishers.CombineLatest(reachedBottomSubject, genreIdSubject)
-            .flatMap { [weak self] _, genreId -> AnyPublisher<MediaItemPage, MovieError> in
+            .filter { [weak self]_ in
+                guard let self = self else {
+                    preconditionFailure("There is no self")
+                }
+                return self.currentPage < self.totalPages
+            }
+            .handleEvents(receiveOutput: { [weak self]_ in
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
                 self.isLoading = true
+            })
+            .flatMap { [weak self] _, genreId -> AnyPublisher<MediaItemPage, MovieError> in
+                guard let self = self else {
+                    preconditionFailure("There is no self")
+                }
                 let request = FetchMediaListRequest(genreId: genreId, includeAdult: true, page: self.currentPage)
                 return Environments.name == .tv ?
                         self.repository.fetchTV(req: request) :
                         self.repository.fetchMovies(req: request)
                 
             }
-            .delay(for: .seconds(1.5), scheduler: RunLoop.main)
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.alertModel = self?.toAlertModel(error)

@@ -40,17 +40,25 @@ struct MovieCell: View {
                     
                 }
 
-                Text(movie.title)
-                    .font(Fonts.subheading)
-                    .lineLimit(2)
-
-                Text("\(movie.year)")
-                    .font(Fonts.paragraph)
-
-                Text("\(movie.duration)")
-                    .font(Fonts.caption)
-
-                Spacer()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(movie.title)
+                            .font(Fonts.subheading)
+                            .lineLimit(2)
+                            .truncationMode(.tail)
+                            .frame(maxWidth: 150, alignment: .leading)
+                        
+                        Text("\(movie.year)")
+                            .font(Fonts.paragraph)
+                        
+                        Text("\(movie.duration)")
+                            .font(Fonts.caption)
+                    }
+                    
+                    Spacer()
+                    
+                    Image(.playButton)
+                }
             }
         }
         

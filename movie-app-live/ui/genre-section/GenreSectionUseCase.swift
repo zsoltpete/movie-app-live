@@ -14,6 +14,7 @@ protocol GenreSectionUseCase {
     func loadGenres() -> AnyPublisher<[Genre], MovieError>
     func genresAppeared()
     func loadMovies(for genre: Genre) -> AnyPublisher<[MediaItem], MovieError>
+    func loadMotdMovie(movie: MediaItem) -> AnyPublisher<MediaItemDetail, MovieError>
 }
 
 class GenreSectionUseCaseImpl: GenreSectionUseCase {
@@ -59,6 +60,12 @@ class GenreSectionUseCaseImpl: GenreSectionUseCase {
             })
             .eraseToAnyPublisher()
                                         
+    }
+    
+    func loadMotdMovie(movie: MediaItem) -> AnyPublisher<MediaItemDetail, MovieError> {
+        let request = FetchDetailRequest(mediaId: movie.id)
+        return self.repository.fetchMovieDetail(req: request)
+        
     }
     
 }

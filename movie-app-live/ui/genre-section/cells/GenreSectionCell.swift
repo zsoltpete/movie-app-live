@@ -13,7 +13,7 @@ struct GenreSectionCell: View {
     var onExpand: (() -> Void)? = nil
     @State private var isExpanded = false
 
-    private let expandedHeight: CGFloat = 180
+    private let expandedHeight: CGFloat = 200
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
