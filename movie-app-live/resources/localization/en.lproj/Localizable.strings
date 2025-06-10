@@ -21,6 +21,8 @@
 "detail.overview" = "Synopsis";
 "detail.publishers" = "Publisher and companies";
 "detail.cast" = "Cast";
+"detail.topReviews" = "Top Reviews";
+"detail.noReviews" = "No reviews";
 "available" = "Available";
 "unavailable" = "Unavailable";
 "noInternet" = "No internet connection";

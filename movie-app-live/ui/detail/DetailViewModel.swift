@@ -16,6 +16,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
     @Published var mediaItemDetail: MediaItemDetail = MediaItemDetail()
     @Published var credits: [CastMember] = []
     @Published var isFavorite: Bool = false
+    @Published var reviews: [MovieReview] = []
     @Published var alertModel: AlertModel? = nil
     
     let mediaItemIdSubject = PassthroughSubject<Int, Never>()
@@ -51,18 +52,28 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 return self.repository.fetchMovieCredits(req: request)
             }
         
-        Publishers.CombineLatest(details, credits)
+        let reviews = mediaItemIdSubject
+            .flatMap { [weak self]mediaItemId in
+                guard let self = self else {
+                    preconditionFailure("There is no self")
+                }
+                let request = FetchMovieReviewsRequest(mediaId: mediaItemId)
+                return self.repository.fetchMovieReviews(req: request)
+            }
+        
+        Publishers.CombineLatest3(details, credits, reviews)
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.alertModel = self?.toAlertModel(error)
                 }
-            } receiveValue: { [weak self] details, credits in
+            } receiveValue: { [weak self] details, credits, reviews in
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
                 self.mediaItemDetail = details
                 self.credits = credits
+                self.reviews = reviews.prefix(4).map { $0 }
                 self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
             }
             .store(in: &cancellables)

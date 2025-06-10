@@ -21,6 +21,7 @@ protocol MovieRepository {
     func editFavoriteMovie(req: EditFavoriteRequest) -> AnyPublisher<EditFavoriteResult, MovieError>
     func fetchMovieDetail(req: FetchDetailRequest) -> AnyPublisher<MediaItemDetail, MovieError>
     func fetchMovieCredits(req: FetchMovieCreditsRequest) -> AnyPublisher<[CastMember], MovieError>
+    func fetchMovieReviews(req: FetchMovieReviewsRequest) -> AnyPublisher<[MovieReview], MovieError>
 }
 
 class MovieRepositoryImpl: MovieRepository {
@@ -148,6 +149,29 @@ class MovieRepositoryImpl: MovieRepository {
                     .eraseToAnyPublisher()
                 } else {
                     return self.castMemberStore.getCastMembers(fromMovieId: req.mediaId)
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchMovieReviews(req: FetchMovieReviewsRequest) -> AnyPublisher<[MovieReview], MovieError> {
+        return networkMonitor.isConnected
+            .flatMap { isConnected -> AnyPublisher<[MovieReview], MovieError> in
+                if isConnected {
+                    return self.requestAndTransform(
+                        target: MultiTarget(MoviesApi.fetchMovieReviews(req: req)),
+                        decodeTo: MovieReviewsResponse.self,
+                        transform: { dto in
+                            dto.results.map(MovieReview.init(dto:))
+                        }
+                    )
+                    .handleEvents(receiveOutput: { [weak self]reviews in
+                        // TODO: Save reviews to store
+                    })
+                    .eraseToAnyPublisher()
+                } else {
+                    // TODO: Fetch reviews from store
+                    return Fail(error: MovieError.unexpectedError).eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()
