@@ -19,6 +19,8 @@ enum MoviesApi {
     case fetchMovieDetail(req: FetchDetailRequest)
     case fetchMovieCredits(req: FetchMovieCreditsRequest)
     case fetchMovieReviews(req: FetchMovieReviewsRequest)
+    case fetchCastMemberDetail(req: FetchCastMemberDetailRequest)
+    case fetchCompanyDetail(req: FetchCastMemberDetailRequest)
 }
 
 extension MoviesApi: TargetType {
@@ -53,12 +55,16 @@ extension MoviesApi: TargetType {
             return "movie/\(req.mediaId)/credits"
         case .fetchMovieReviews(req: let req):
             return "movie/\(req.mediaId)/reviews"
+        case .fetchCastMemberDetail(req: let req):
+            return "person/\(req.castMemberId)"
+        case .fetchCompanyDetail(req: let req):
+            return "company/\(req.castMemberId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .fetchGenres, .fetchTVGenres, .fetchMovies, .fetchTV, .searchMovies, .fetchFavoriteMovies, .fetchMovieDetail, .fetchMovieCredits, .fetchMovieReviews:
+        case .fetchGenres, .fetchTVGenres, .fetchMovies, .fetchTV, .searchMovies, .fetchFavoriteMovies, .fetchMovieDetail, .fetchMovieCredits, .fetchMovieReviews, .fetchCastMemberDetail, .fetchCompanyDetail:
             return .get
         case .editFavoriteMovie:
             return .post
@@ -90,6 +96,10 @@ extension MoviesApi: TargetType {
             return .requestParameters(parameters: req.asRequestParams(), encoding: URLEncoding.queryString)
         case .fetchMovieReviews(req: let req):
             return .requestParameters(parameters: req.asRequestParams(), encoding: URLEncoding.queryString)
+        case .fetchCastMemberDetail(req: let req):
+            return .requestParameters(parameters: req.asRequestParams(), encoding: URLEncoding.queryString)
+        case .fetchCompanyDetail(req: let req):
+            return .requestParameters(parameters: req.asRequestParams(), encoding: URLEncoding.queryString)
         }
     }
     
@@ -120,6 +130,10 @@ extension MoviesApi: TargetType {
         case .fetchMovieCredits(req: let req):
             return ["Authorization": req.accessToken]
         case .fetchMovieReviews(req: let req):
+            return ["Authorization": req.accessToken]
+        case .fetchCastMemberDetail(req: let req):
+            return ["Authorization": req.accessToken]
+        case .fetchCompanyDetail(req: let req):
             return ["Authorization": req.accessToken]
         }
     }
