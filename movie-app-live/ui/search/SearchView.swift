@@ -22,6 +22,7 @@ struct SearchView: View {
                         .onChange(of: viewModel.searchText) {
                             viewModel.startSearch.send(())
                         }
+                        .accessibilityLabel(AccessibilityLabels.searchTextField)
                 }
                 .frame(height: 56)
                 .padding(.horizontal, LayoutConst.normalPadding)

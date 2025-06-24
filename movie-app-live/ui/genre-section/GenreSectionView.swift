@@ -42,7 +42,7 @@ struct GenreSectionView: View {
             }
             .listStyle(.plain)
             .navigationTitle(title)
-            .accessibilityLabel("testCollectionView")
+            .accessibilityLabel(AccessibilityLabels.genreSectionCollectionView)
         }
         .showAlert(model: $viewModel.alertModel)
         .onAppear{

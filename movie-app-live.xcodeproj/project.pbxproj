@@ -11,6 +11,9 @@
 		54002E5C2DD7549D00E83EEA /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5B2DD7549D00E83EEA /* SDWebImageSwiftUI */; };
 		54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5E2DD87F5E00E83EEA /* RealmSwift */; };
 		54002E602DD89D3900E83EEA /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 54002E5E2DD87F5E00E83EEA /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		540EE4E22E0179250085B838 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 540EE4E12E0179250085B838 /* FirebaseAnalytics */; };
+		540EE4E42E0179250085B838 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 540EE4E32E0179250085B838 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		540EE4E62E0179250085B838 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 540EE4E52E0179250085B838 /* FirebaseCrashlytics */; };
 		54272B9A2DEDE62700A81EE6 /* PullToRefreshSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54272B992DEDE62700A81EE6 /* PullToRefreshSwiftUI */; };
 		545E96612DB68C8E00DC8DCC /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 545E96602DB68C8E00DC8DCC /* Quick */; };
 		545E96642DB68C9C00DC8DCC /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 545E96632DB68C9C00DC8DCC /* Nimble */; };
@@ -57,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		540EE4EB2E0194AD0085B838 /* movie-app-live PROD.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "movie-app-live PROD.xctestplan"; sourceTree = "<group>"; };
 		5454C3FA2DA52BF6009B0231 /* movie-app-live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-app-live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54889A852DB687E3009E26EB /* movie-app-liveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "movie-app-liveTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54889A922DB68825009E26EB /* movie-app-live DEV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "movie-app-live DEV.xctestplan"; sourceTree = "<group>"; };
@@ -71,6 +75,13 @@
 			);
 			target = 5454C3F92DA52BF6009B0231 /* movie-app-live */;
 		};
+		54C9D9352E01A18400F1A82B /* Exceptions for "movie-app-live" folder in "movie-app-liveUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				helpers/AccessibilityLabels.swift,
+			);
+			target = 54D4EA992DB6940300FD6580 /* movie-app-liveUITests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -78,6 +89,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				5454C43A2DA53EDA009B0231 /* Exceptions for "movie-app-live" folder in "movie-app-live" target */,
+				54C9D9352E01A18400F1A82B /* Exceptions for "movie-app-live" folder in "movie-app-liveUITests" target */,
 			);
 			path = "movie-app-live";
 			sourceTree = "<group>";
@@ -105,7 +117,10 @@
 				54002E5F2DD87F5E00E83EEA /* RealmSwift in Frameworks */,
 				54B1DFB82DE9FFFC00687E35 /* Shimmer in Frameworks */,
 				54002E452DD62D3300E83EEA /* Reachability in Frameworks */,
+				540EE4E22E0179250085B838 /* FirebaseAnalytics in Frameworks */,
+				540EE4E42E0179250085B838 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				547C0ACB2DAE26A700D04FDB /* Moya in Frameworks */,
+				540EE4E62E0179250085B838 /* FirebaseCrashlytics in Frameworks */,
 				547C0AC92DAE26A700D04FDB /* CombineMoya in Frameworks */,
 				5488995E2DAE8548009E26EB /* Swinject in Frameworks */,
 				54B1DFAC2DE9F70900687E35 /* Lottie in Frameworks */,
@@ -137,6 +152,7 @@
 		5454C3F12DA52BF6009B0231 = {
 			isa = PBXGroup;
 			children = (
+				540EE4EB2E0194AD0085B838 /* movie-app-live PROD.xctestplan */,
 				54889A922DB68825009E26EB /* movie-app-live DEV.xctestplan */,
 				5454C3FC2DA52BF6009B0231 /* movie-app-live */,
 				54889A862DB687E3009E26EB /* movie-app-liveTests */,
@@ -194,6 +210,9 @@
 				54B1DFAB2DE9F70900687E35 /* Lottie */,
 				54B1DFB72DE9FFFC00687E35 /* Shimmer */,
 				54272B992DEDE62700A81EE6 /* PullToRefreshSwiftUI */,
+				540EE4E12E0179250085B838 /* FirebaseAnalytics */,
+				540EE4E32E0179250085B838 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				540EE4E52E0179250085B838 /* FirebaseCrashlytics */,
 			);
 			productName = "movie-app-live";
 			productReference = 5454C3FA2DA52BF6009B0231 /* movie-app-live.app */;
@@ -297,6 +316,7 @@
 				54B1DFAA2DE9F70900687E35 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				54B1DFB62DE9FFFC00687E35 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				54272B982DEDE62700A81EE6 /* XCRemoteSwiftPackageReference "PullToRefreshSwiftUI" */,
+				540EE4E02E0179240085B838 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5454C3FB2DA52BF6009B0231 /* Products */;
@@ -497,7 +517,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"movie-app-live/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD326H7VF;
 				ENABLE_PREVIEWS = YES;
@@ -515,8 +535,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live";
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -535,7 +555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"movie-app-live/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD326H7VF;
 				ENABLE_PREVIEWS = YES;
@@ -553,8 +573,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live";
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -629,14 +649,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"movie-app-live/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD326H7VF;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "movie-app-live/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DEV movie";
+				INFOPLIST_KEY_CFBundleDisplayName = "Movie App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -647,7 +667,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -730,14 +750,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"movie-app-live/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD326H7VF;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "movie-app-live/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DEV movie";
+				INFOPLIST_KEY_CFBundleDisplayName = "Movie App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -748,7 +768,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -831,7 +851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"movie-app-live/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD326H7VF;
 				ENABLE_PREVIEWS = YES;
@@ -849,7 +869,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live.tv";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -925,7 +945,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"movie-app-live/Preview Content\"";
 				DEVELOPMENT_TEAM = CSD326H7VF;
 				ENABLE_PREVIEWS = YES;
@@ -943,7 +963,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "eu.codeyard.movie-app-live.tv";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1891,6 +1911,14 @@
 				kind = branch;
 			};
 		};
+		540EE4E02E0179240085B838 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.14.0;
+			};
+		};
 		54272B982DEDE62700A81EE6 /* XCRemoteSwiftPackageReference "PullToRefreshSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/shakurocom/PullToRefreshSwiftUI";
@@ -1980,6 +2008,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54002E5D2DD87F5E00E83EEA /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		540EE4E12E0179250085B838 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 540EE4E02E0179240085B838 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		540EE4E32E0179250085B838 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 540EE4E02E0179240085B838 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		540EE4E52E0179250085B838 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 540EE4E02E0179240085B838 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		54272B992DEDE62700A81EE6 /* PullToRefreshSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

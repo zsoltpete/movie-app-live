@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "F79D050B-68BE-4678-B59C-DBDBCAC6DEB9",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:movie-app-live.xcodeproj",
+      "identifier" : "5454C3F92DA52BF6009B0231",
+      "name" : "movie-app-live"
+    }
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "FavoriesViewUITests",
+        "FavoriesViewUITests\/testFavoriteSelection()",
+        "GenreSectionViewUITests",
+        "GenreSectionViewUITests\/testGenreSelection()",
+        "MainTabViewUITests",
+        "MainTabViewUITests\/testTabbarItems()",
+        "movie_app_liveUITests"
+      ],
+      "target" : {
+        "containerPath" : "container:movie-app-live.xcodeproj",
+        "identifier" : "54D4EA992DB6940300FD6580",
+        "name" : "movie-app-liveUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
