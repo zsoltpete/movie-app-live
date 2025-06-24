@@ -38,7 +38,7 @@ struct GenreSectionCell: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 16) {
                         ForEach(movies) { movie in
-                            MovieCell(movie: movie)
+                                                    MediaItemCell(movie: movie)
                                 .frame(width: 160)
                         }
                     }

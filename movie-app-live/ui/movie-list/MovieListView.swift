@@ -20,9 +20,9 @@ struct MovieListView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: LayoutConst.largePadding) {
                 ForEach(viewModel.movies.indices, id: \.self) { index in
-                    let movie = viewModel.movies[index]
-                    NavigationLink(destination: DetailView(mediaItem: movie)) {
-                        MovieCell(movie: movie)
+                    let mediaItem = viewModel.movies[index]
+                    NavigationLink(destination: DetailView(mediaItem: mediaItem)) {
+                        MediaItemCell(movie: mediaItem)
                             .onAppear {
                                 if index == viewModel.movies.count - 1 {
                                     viewModel.reachedBottomSubject.send()

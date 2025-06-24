@@ -49,7 +49,7 @@ struct SearchView: View {
                         LazyVStack(spacing: LayoutConst.normalPadding) {
                             ForEach(viewModel.movies) { movie in
                                 NavigationLink(destination: DetailView(mediaItem: movie)) {
-                                    MovieCell(movie: movie)
+                                                            MediaItemCell(movie: movie)
                                         .frame(height: 277)
                                 }
                                 .buttonStyle(PlainButtonStyle())

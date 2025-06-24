@@ -20,7 +20,7 @@ struct MediaItemListByGenre: View {
                 HStack(spacing: 20) {
                     ForEach(mediaItems) {mediaItem in
                         NavigationLink(destination: DetailView(mediaItem: mediaItem)) {
-                            MovieCell(movie: mediaItem)
+                                                    MediaItemCell(movie: mediaItem)
                                 .frame(width: 200)
                         }
                         .buttonStyle(PlainButtonStyle())

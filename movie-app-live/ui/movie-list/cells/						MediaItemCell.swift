@@ -8,7 +8,7 @@
 import Shimmer
 import SwiftUI
 
-struct MovieCell: View {
+struct                         MediaItemCell: View {
     let movie: MediaItem
     
     var body: some View {
@@ -18,7 +18,7 @@ struct MovieCell: View {
             }
             .frame(height: 100)
             .frame(maxHeight: 180)
-            .frame(maxWidth: .infinity)
+            //.frame(maxWidth: .infinity)
             .cornerRadius(12)
             .shimmering()
         } else {
@@ -28,7 +28,7 @@ struct MovieCell: View {
                         LoadImageView(url: movie.imageUrl)
                         .frame(height: 100)
                         .frame(maxHeight: 180)
-                        .frame(maxWidth: .infinity)
+                        //.frame(maxWidth: .infinity)
                         .cornerRadius(12)
                     }
                     
@@ -66,7 +66,7 @@ struct MovieCell: View {
 }
 
 #Preview {
-    MovieCell(movie: MediaItem(id: 2,
+                            MediaItemCell(movie: MediaItem(id: 2,
                            title: "Mock movie2",
                            year: "2024",
                            duration: "1h 34m",

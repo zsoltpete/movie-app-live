@@ -37,7 +37,7 @@ struct ParticipantScrollView: View {
                             case .none:
                                 ParticipantCell(imageUrl: participant.imageUrl, title: participant.name)
                             case .castMember:
-                                NavigationLink(destination: CastMemberDetailView(castDetailType: .castMember(id: 115440))) {
+                                NavigationLink(destination: CastMemberDetailView(castDetailType: .castMember(id: participant.id))) {
                                     ParticipantCell(imageUrl: participant.imageUrl, title: participant.name)
                                 }
                                 .buttonStyle(PlainButtonStyle())
