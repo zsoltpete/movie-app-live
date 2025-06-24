@@ -1,5 +1,5 @@
 //
-//  MovieLabel.swift
+//  MediaItemLabel.swift
 //  movie-app-live
 //
 //  Created by Zsolt Pete on 2025. 04. 26..
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-enum MovieLabelType {
+enum MediaItemLabelType {
     case rating(_ value: Double)
     case voteCount(_ vote: Int)
     case popularity(_ popularity: Double)
     case adult(_ adult: Bool)
 }
 
-struct MovieLabel: View {
+struct MediaItemLabel: View {
     
-    let type: MovieLabelType
+    let type: MediaItemLabelType
     
     var body: some View {
         var imageRes: ImageResource

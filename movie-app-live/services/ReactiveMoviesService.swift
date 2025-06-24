@@ -20,7 +20,9 @@ protocol MovieRepository {
     func fetchFavoriteMovies(req: FetchFavoriteMovieRequest, fromLocal: Bool) -> AnyPublisher<[MediaItem], MovieError>
     func editFavoriteMovie(req: EditFavoriteRequest) -> AnyPublisher<EditFavoriteResult, MovieError>
     func fetchMovieDetail(req: FetchDetailRequest) -> AnyPublisher<MediaItemDetail, MovieError>
+    func fetchTVDetail(req: FetchDetailRequest) -> AnyPublisher<MediaItemDetail, MovieError>
     func fetchMovieCredits(req: FetchMovieCreditsRequest) -> AnyPublisher<[CastMember], MovieError>
+    func fetchTVCredits(req: FetchMovieCreditsRequest) -> AnyPublisher<[CastMember], MovieError>
     func fetchMovieReviews(req: FetchMovieReviewsRequest) -> AnyPublisher<[MovieReview], MovieError>
     func fetchCastMemberDetail(req: FetchCastMemberDetailRequest) -> AnyPublisher<CastDetail, MovieError>
     func fetchCompanyDetail(req: FetchCastMemberDetailRequest) -> AnyPublisher<CastDetail, MovieError>
@@ -149,6 +151,14 @@ class MovieRepositoryImpl: MovieRepository {
             .eraseToAnyPublisher()
     }
     
+    func fetchTVDetail(req: FetchDetailRequest) -> AnyPublisher<MediaItemDetail, MovieError> {
+        requestAndTransform(
+            target: MultiTarget(MoviesApi.fetchTVDetail(req: req)),
+            decodeTo: TVDetailResponse.self,
+            transform: { MediaItemDetail(dto: $0) }
+        )
+    }
+    
     func fetchMovieCredits(req: FetchMovieCreditsRequest) -> AnyPublisher<[CastMember], MovieError> {
         
         return networkMonitor.isConnected
@@ -170,6 +180,14 @@ class MovieRepositoryImpl: MovieRepository {
                 }
             }
             .eraseToAnyPublisher()
+    }
+    
+    func fetchTVCredits(req: FetchMovieCreditsRequest) -> AnyPublisher<[CastMember], MovieError> {
+        requestAndTransform(
+            target: MultiTarget(MoviesApi.fetchTVCredits(req: req)),
+            decodeTo: MovieCreditsResponse.self,
+            transform: { $0.cast.map(CastMember.init(dto:)) }
+        )
     }
     
     func fetchMovieReviews(req: FetchMovieReviewsRequest) -> AnyPublisher<[MovieReview], MovieError> {

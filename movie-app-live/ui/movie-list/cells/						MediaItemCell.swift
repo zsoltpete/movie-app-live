@@ -33,8 +33,8 @@ struct                         MediaItemCell: View {
                     }
                     
                     HStack(spacing: 12.0) {
-                        MovieLabel(type: .rating(movie.rating))
-                        MovieLabel(type: .voteCount(movie.voteCount))
+                        MediaItemLabel(type: .rating(movie.rating))
+                        MediaItemLabel(type: .voteCount(movie.voteCount))
                     }
                     .padding(LayoutConst.smallPadding)
                     

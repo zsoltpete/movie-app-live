@@ -40,7 +40,8 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                     preconditionFailure("There is no self")
                 }
                 let request = FetchDetailRequest(mediaId: mediaItemId)
-                return self.repository.fetchMovieDetail(req: request)
+                return Environments.name == .tv ? self.repository.fetchTVDetail(req: request) :
+                                                  self.repository.fetchMovieDetail(req: request)
             }
         
         let credits = mediaItemIdSubject
@@ -49,7 +50,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                     preconditionFailure("There is no self")
                 }
                 let request = FetchMovieCreditsRequest(mediaId: mediaItemId)
-                return self.repository.fetchMovieCredits(req: request)
+                return Environments.name == .tv ? self.repository.fetchTVCredits(req: request) : self.repository.fetchMovieCredits(req: request)
             }
         
         let reviews = mediaItemIdSubject
@@ -60,7 +61,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 let request = FetchMovieReviewsRequest(mediaId: mediaItemId)
                 return self.repository.fetchMovieReviews(req: request)
             }
-        
+        /*
         Publishers.CombineLatest3(details, credits, reviews)
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
@@ -74,6 +75,23 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 self.mediaItemDetail = details
                 self.credits = credits
                 self.reviews = reviews.prefix(4).map { $0 }
+                self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
+            }
+            .store(in: &cancellables)
+        */
+        
+        Publishers.CombineLatest(details, credits)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                if case let .failure(error) = completion {
+                    self?.alertModel = self?.toAlertModel(error)
+                }
+            } receiveValue: { [weak self] details, credits in
+                guard let self = self else {
+                    preconditionFailure("There is no self")
+                }
+                self.mediaItemDetail = details
+                self.credits = credits
                 self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
             }
             .store(in: &cancellables)

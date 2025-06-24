@@ -17,7 +17,7 @@ struct ReviewCell: View {
                     .font(Fonts.subheading)
                 Spacer()
                 if let rating = review.rating {
-                    MovieLabel(type: .rating(rating))
+                    MediaItemLabel(type: .rating(rating))
                 }
             }
             Text(review.content)

@@ -29,11 +29,11 @@ struct DetailView: View {
                     .cornerRadius(30)
                 
                 HStack(spacing: 12.0) {
-                    MovieLabel(type: .rating(mediaItemDetail.rating))
-                    MovieLabel(type: .voteCount(mediaItemDetail.voteCount))
-                    MovieLabel(type: .popularity(mediaItemDetail.popularity))
+                    MediaItemLabel(type: .rating(mediaItemDetail.rating))
+                    MediaItemLabel(type: .voteCount(mediaItemDetail.voteCount))
+                    MediaItemLabel(type: .popularity(mediaItemDetail.popularity))
                     Spacer()
-                    MovieLabel(type: .adult(mediaItemDetail.adult))
+                    MediaItemLabel(type: .adult(mediaItemDetail.adult))
                 }
                 
                 Text(viewModel.mediaItemDetail.genreList)
