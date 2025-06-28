@@ -1,4 +1,4 @@
-struct SearchMovieRequest {
+struct SearchMediaItemRequest {
     let accessToken: String = Config.bearerToken
     let query: String
     

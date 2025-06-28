@@ -19,7 +19,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
     @Published var reviews: [MovieReview] = []
     @Published var alertModel: AlertModel? = nil
     
-    let mediaItemIdSubject = PassthroughSubject<Int, Never>()
+    let mediaItemSubject = PassthroughSubject<MediaItem, Never>()
     let favoriteButtonTapped = PassthroughSubject<Void, Never>()
     
     @Inject
@@ -32,33 +32,33 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
     
     init() {
         
-        let mediaItemIdSubject = mediaItemIdSubject.share()
+        let mediaItemSubject = mediaItemSubject.share()
         
-        let details = mediaItemIdSubject
-            .flatMap { [weak self]mediaItemId in
+        let details = mediaItemSubject
+            .flatMap { [weak self]mediaItem in
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                let request = FetchDetailRequest(mediaId: mediaItemId)
-                return Environments.name == .tv ? self.repository.fetchTVDetail(req: request) :
+                let request = FetchDetailRequest(mediaId: mediaItem.id)
+                return mediaItem.type == .tv ? self.repository.fetchTVDetail(req: request) :
                                                   self.repository.fetchMovieDetail(req: request)
             }
         
-        let credits = mediaItemIdSubject
-            .flatMap { [weak self]mediaItemId in
+        let credits = mediaItemSubject
+            .flatMap { [weak self]mediaItem in
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                let request = FetchMovieCreditsRequest(mediaId: mediaItemId)
-                return Environments.name == .tv ? self.repository.fetchTVCredits(req: request) : self.repository.fetchMovieCredits(req: request)
+                let request = FetchMovieCreditsRequest(mediaId: mediaItem.id)
+                return mediaItem.type == .tv ? self.repository.fetchTVCredits(req: request) : self.repository.fetchMovieCredits(req: request)
             }
         
-        let reviews = mediaItemIdSubject
-            .flatMap { [weak self]mediaItemId in
+        let reviews = mediaItemSubject
+            .flatMap { [weak self]mediaItem in
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                let request = FetchMovieReviewsRequest(mediaId: mediaItemId)
+                let request = FetchMovieReviewsRequest(mediaId: mediaItem.id)
                 return self.repository.fetchMovieReviews(req: request)
             }
         /*
@@ -78,7 +78,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
             }
             .store(in: &cancellables)
-        */
+         */
         
         Publishers.CombineLatest(details, credits)
             .receive(on: RunLoop.main)

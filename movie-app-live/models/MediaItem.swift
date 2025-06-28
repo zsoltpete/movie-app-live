@@ -25,6 +25,12 @@ struct MediaItemPage {
     }
 }
 
+enum MediaItemType: Decodable {
+    case tv
+    case movie
+    case unknown
+}
+
 struct MediaItem: Identifiable {
     let id: Int
     let title: String
@@ -33,6 +39,7 @@ struct MediaItem: Identifiable {
     let imageUrl: URL?
     let rating: Double
     let voteCount: Int
+    let type: MediaItemType
     
     init(id: Int) {
         self.id = id
@@ -42,6 +49,7 @@ struct MediaItem: Identifiable {
         self.imageUrl = nil
         self.rating = -1
         self.voteCount = -1
+        self.type = .unknown
     }
     
     init(id: Int, title: String, year: String, duration: String, imageUrl: URL?, rating: Double, voteCount: Int) {
@@ -52,6 +60,7 @@ struct MediaItem: Identifiable {
         self.imageUrl = imageUrl
         self.rating = rating
         self.voteCount = voteCount
+        self.type = .unknown
     }
     
     init(dto: MovieResponse) {
@@ -73,6 +82,7 @@ struct MediaItem: Identifiable {
         self.imageUrl = imageUrl
         self.rating = dto.voteAverage ?? 0.0
         self.voteCount = dto.voteCount ?? 0
+        self.type = .movie
         
     }
     
@@ -80,7 +90,7 @@ struct MediaItem: Identifiable {
         let releaseDate: String? = dto.firstAirDate
         let prefixedYear: Substring = releaseDate?.prefix(4) ?? "-"
         let year = String(prefixedYear)
-        let duration = "1h 25min" // TODO: placeholder – ha lesz ilyen adat, cserélhető
+        let duration = ""
         
         var imageUrl: URL? {
             dto.posterPath.flatMap {
@@ -95,6 +105,7 @@ struct MediaItem: Identifiable {
         self.imageUrl = imageUrl
         self.rating = dto.voteAverage ?? 0.0
         self.voteCount = dto.voteCount ?? 0
+        self.type = .tv
         
     }
     
@@ -106,6 +117,7 @@ struct MediaItem: Identifiable {
         self.imageUrl = detail.imageUrl
         self.rating = detail.rating
         self.voteCount = detail.voteCount
+        self.type = detail.type
         
     }
     

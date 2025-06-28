@@ -43,7 +43,7 @@ class MediaItemListViewModel: MediaItemListViewModelProtocol, ErrorPresentable {
                 }
                 let request = FetchMediaListRequest(genreId: genreId, includeAdult: true, page: self.currentPage)
                 return Environments.name == .tv ?
-                        self.repository.fetchTV(req: request) :
+                        self.repository.fetchTVs(req: request) :
                         self.repository.fetchMovies(req: request)
                 
             }

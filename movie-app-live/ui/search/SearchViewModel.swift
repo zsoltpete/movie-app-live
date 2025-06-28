@@ -28,8 +28,8 @@ class SearchViewModel: SearchViewModelProtocol, ErrorPresentable {
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                let request = SearchMovieRequest(query: self.searchText)
-                return self.repository.searchMovies(req: request)
+                let request = SearchMediaItemRequest(query: self.searchText)
+                return Environments.name == .tv ? self.repository.searchTVs(req: request) : self.repository.searchMovies(req: request)
             }
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {
