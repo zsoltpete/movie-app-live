@@ -38,7 +38,7 @@ struct CastMemberDetailView: View {
                             
                             HStack(spacing: 40) {
                                 VStack(alignment: .leading) {
-                                    Text("Birth year")
+                                    Text("birthYear".localized())
                                         .font(Fonts.caption)
                                         .foregroundColor(Color.primary)
                                     Text(castMember.birthYear ?? "" )
@@ -47,7 +47,7 @@ struct CastMemberDetailView: View {
                                 }
                                 
                                 VStack(alignment: .leading) {
-                                    Text("City")
+                                    Text("city".localized())
                                         .font(Fonts.caption)
                                         .foregroundColor(Color.primary)
                                     Text(castMember.originPlace ?? "")
@@ -59,7 +59,7 @@ struct CastMemberDetailView: View {
                             .padding(.horizontal)
                             
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Bio")
+                                Text("bio".localized())
                                     .font(Fonts.caption)
                                     .foregroundColor(Color.primary)
                                 Text(castMember.biography ?? "")
@@ -69,12 +69,13 @@ struct CastMemberDetailView: View {
                             .padding(.horizontal)
                             
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Popularity")
+                                Text("popularity".localized())
                                     .font(Fonts.caption)
                                     .foregroundColor(Color.primary)
                                 HStack {
                                     Spacer()
                                     StarRatingView(rating: $viewModel.rating, starSize: 24)
+                                        .allowsHitTesting(false)
                                     Spacer()
                                 }
                             }

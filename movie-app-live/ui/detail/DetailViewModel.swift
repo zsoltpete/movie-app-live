@@ -16,7 +16,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
     @Published var mediaItemDetail: MediaItemDetail = MediaItemDetail()
     @Published var credits: [CastMember] = []
     @Published var isFavorite: Bool = false
-    @Published var reviews: [MovieReview] = []
+    @Published var reviews: [MediaItemReview] = []
     @Published var alertModel: AlertModel? = nil
     
     let mediaItemSubject = PassthroughSubject<MediaItem, Never>()
@@ -58,10 +58,10 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                let request = FetchMovieReviewsRequest(mediaId: mediaItem.id)
-                return self.repository.fetchMovieReviews(req: request)
+                let request = FetchMediaItemReviewsRequest(mediaId: mediaItem.id)
+                return mediaItem.type == .tv ? self.repository.fetchTVReviews(req: request) : self.repository.fetchMovieReviews(req: request)
             }
-        /*
+        
         Publishers.CombineLatest3(details, credits, reviews)
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
@@ -78,23 +78,7 @@ class DetailViewModel: DetailViewModelProtocol, ErrorPresentable {
                 self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
             }
             .store(in: &cancellables)
-         */
-        
-        Publishers.CombineLatest(details, credits)
-            .receive(on: RunLoop.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.alertModel = self?.toAlertModel(error)
-                }
-            } receiveValue: { [weak self] details, credits in
-                guard let self = self else {
-                    preconditionFailure("There is no self")
-                }
-                self.mediaItemDetail = details
-                self.credits = credits
-                self.isFavorite = self.mediaItemStore.isMediaItemStored(withId: details.id)
-            }
-            .store(in: &cancellables)
+         
         
         favoriteButtonTapped
             .flatMap { [weak self] _ -> AnyPublisher<(EditFavoriteResult, Bool), MovieError> in

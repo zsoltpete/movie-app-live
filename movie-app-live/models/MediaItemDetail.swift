@@ -127,7 +127,7 @@ struct MediaItemDetail: Identifiable {
         self.spokenLanguages = dto.spokenLanguages
             .map { $0.englishName }
             .joined(separator: ", ")
-        self.imdbURL = dto.homepage.flatMap { URL(string: $0) }
+        self.imdbURL = nil
         self.productionCompanies = dto.productionCompanies.map { ProductionCompany(dto: $0) }
         self.type = .tv
     }

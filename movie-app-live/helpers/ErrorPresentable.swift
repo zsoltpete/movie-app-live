@@ -14,37 +14,37 @@ extension ErrorPresentable {
     func toAlertModel(_ error: Error) -> AlertModel? {
         guard let error = error as? MovieError else {
             return AlertModel(
-                title: "unexpected.error.title",
-                message: "unexpected.error.message",
-                dismissButtonTitle: "button.close.text"
+                title: "unexpected.error.title".localized(),
+                message: "unexpected.error.message".localized(),
+                dismissButtonTitle: "button.close.text".localized()
             )
         }
         switch error {
         case .invalidApiKeyError(let message):
             return AlertModel(
-                title: "API Error",
+                title: "apierror.error.title".localized(),
                 message: message,
-                dismissButtonTitle: "button.close.text"
+                dismissButtonTitle: "button.close.text".localized()
             )
         case .clientError:
             return AlertModel(
-                title: "Client Error",
+                title: "clienterror.error.title".localized(),
                 message: error.localizedDescription,
-                dismissButtonTitle: "button.close.text"
+                dismissButtonTitle: "button.close.text".localized()
             )
         case .mappingError(let message):
             return AlertModel(
-                title: "Mapping Error",
+                title: "mappingerror.error.title".localized(),
                 message: message,
-                dismissButtonTitle: "button.close.text"
+                dismissButtonTitle: "button.close.text".localized()
             )
         case .noInternetError:
             return nil
         default:
             return AlertModel(
-                title: "unexpected.error.title",
-                message: "unexpected.error.message",
-                dismissButtonTitle: "button.close.text"
+                title: "unexpected.error.title".localized(),
+                message: "unexpected.error.message".localized(),
+                dismissButtonTitle: "button.close.text".localized()
             )
         }
     }

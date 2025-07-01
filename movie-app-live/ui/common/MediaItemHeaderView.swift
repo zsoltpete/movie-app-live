@@ -20,9 +20,9 @@ struct MediaItemHeaderView: View {
                 .font(Fonts.detailsTitle)
             
             HStack(spacing: LayoutConst.normalPadding) {
-                DetailLabel(title: "detail.releaseDate", desc: year)
-                DetailLabel(title: "detail.runtime", desc: "\(runtime)")
-                DetailLabel(title: "detail.language", desc: spokenLanguages)
+                DetailLabel(title: "detail.releaseDate".localized(), desc: year)
+                DetailLabel(title: "detail.runtime".localized(), desc: "\(runtime)")
+                DetailLabel(title: "detail.language".localized(), desc: spokenLanguages)
             }
         }
     }

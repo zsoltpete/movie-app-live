@@ -37,9 +37,12 @@ struct GenreSectionCell: View {
             ZStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 16) {
-                        ForEach(movies) { movie in
-                                                    MediaItemCell(movie: movie)
-                                .frame(width: 160)
+                        ForEach(movies) { mediaItem in
+                            NavigationLink(destination: DetailView(mediaItem: mediaItem)) {
+                                MediaItemCell(movie: mediaItem)
+                                    .frame(width: 160)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .padding(.top, LayoutConst.normalPadding)

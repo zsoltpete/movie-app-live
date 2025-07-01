@@ -16,6 +16,7 @@ struct SplashView: View {
     var body: some View {
         if showRootView {
             RootView(selectedTab: selectedTab)
+                .environmentObject(LanguageManager.shared)
         } else {
             CustomLottieView(name: "movies.lottie", completion: {
                 showRootView = true

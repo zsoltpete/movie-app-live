@@ -22,7 +22,6 @@ class SearchViewModel: SearchViewModelProtocol, ErrorPresentable {
     
     init() {
         startSearch
-            .print("<<< startSearch")
             .debounce(for: .seconds(2.5), scheduler: RunLoop.main)
             .flatMap { [weak self]_ ->  AnyPublisher<[MediaItem], MovieError> in
                 guard let self = self else {

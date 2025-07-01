@@ -41,6 +41,8 @@ struct MediaItemLabel: View {
             Image(imageRes)
             Text(text.localized())
                 .font(Fonts.labelBold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
         }
         .padding(6.0)
         .background(Color.mainLabelForeground)

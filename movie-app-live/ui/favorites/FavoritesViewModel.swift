@@ -24,7 +24,10 @@ class FavoritesViewModel: FavoritesViewModelProtocol, ErrorPresentable {
                 guard let self = self else {
                     preconditionFailure("There is no self")
                 }
-                return self.repository.fetchFavoriteMovies(req: FetchFavoriteMovieRequest(), fromLocal: false)
+                return Environments.name == .tv ?
+                self.repository.fetchFavoriteTVs(req: FetchFavoriteMediaItemRequest(),
+                                                                                   fromLocal: false) : self.repository.fetchFavoriteMovies(req: FetchFavoriteMediaItemRequest(),
+                                                                                   fromLocal: false)
             }
             .receive(on: RunLoop.main)
             .sink { completion in

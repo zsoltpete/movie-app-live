@@ -7,33 +7,42 @@
 */
 
 
-"genreSection.title" = "Приложение о фильмах";
-"search.empty.title" = "Начните печатать,\nчтобы выполнить поиск";
-"search.textfield.placeholder" = "Фильмы, Режиссер, Актер, Актриса и т.д.";
+"genreSection.title" = "Filmes app";
+"search.empty.title" = "Начните вводить\nдля поиска";
+"search.textfield.placeholder" = "Фильмы, Режиссёр, Актёр, Актриса и т.д.";
 "button.close.text" = "Закрыть";
 "unexpected.error.title" = "Неожиданная ошибка";
-"unexpected.error.message" = "Что-то пошло не так. Пожалуйста, попробуйте позже.";
+"apierror.error.title" = "Ошибка API";
+"clienterror.error.title" = "Ошибка клиента";
+"mappingerror.error.title" = "Ошибка сопоставления";
+"unexpected.error.message" = "Произошла ошибка. Пожалуйста, попробуйте позже.";
 "favoriteMovies.title" = "Избранное";
 "detail.rate.button" = "Оценить фильм";
-"detail.imdb.button" = "Посетить на IMDB";
+"detail.imdb.button" = "Смотреть на IMDB";
 "detail.releaseDate" = "Дата выхода";
 "detail.runtime" = "Продолжительность";
 "detail.language" = "Язык";
-"detail.overview" = "Синопсис";
+"detail.overview" = "Описание";
 "detail.publishers" = "Издатели и компании";
-"detail.cast" = "Актерский состав";
+"detail.cast" = "Актёрский состав";
 "available" = "Доступно";
 "unavailable" = "Недоступно";
 "noInternet" = "Нет подключения к интернету";
-"addReview.subTitle" = "Оставьте честный отзыв";
+"addReview.subTitle" = "Напишите честный отзыв";
 "addReview.buttonTitle" = "Отправить отзыв";
-
+"mediaItem.default.duration" = "1ч 25мин";
 "settings.title" = "Настройки";
-"settings.chooseLanguage" = "Выбрать язык";
-"settings.chooseTheme" = "Выбрать тему";
+"settings.chooseLanguage" = "Выбор языка";
+"settings.chooseTheme" = "Выбор темы";
 "settings.lang.english" = "Английский";
-"settings.lang.russian" = "Немецкий";
+"settings.lang.russian" = "Русский";
 "settings.lang.hungarian" = "Венгерский";
 "settings.theme.light" = "Светлая тема";
-"settings.theme.dark" = "Темная тема";
-
+"settings.theme.dark" = "Тёмная тема";
+"version" = "Версия";
+"createdby" = "Создано: Аноним";
+"detail.topReviews" = "Лучшие отзывы";
+"birthYear" = "Год рождения";
+"city" = "Город";
+"bio" = "Биография";
+"popularity" = "Популярность";

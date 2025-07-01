@@ -5,11 +5,11 @@
 //  Created by Zsolt Pete on 2025. 05. 13..
 //
 
-struct FetchMovieCreditsRequest{
+struct FetchMovieCreditsRequest: LocalizedRequestable {
     let accessToken: String = Config.bearerToken
     let mediaId: Int
     
     func asRequestParams() -> [String: Any]{
-        return [:]
+        return languageParam
     }
 }

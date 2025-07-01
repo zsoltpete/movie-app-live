@@ -113,7 +113,7 @@ struct MediaItem: Identifiable {
         self.id = detail.id
         self.title = detail.title
         self.year = detail.year
-        self.duration = "1h 25min"
+        self.duration = "mediaItem.default.duration".localized()
         self.imageUrl = detail.imageUrl
         self.rating = detail.rating
         self.voteCount = detail.voteCount

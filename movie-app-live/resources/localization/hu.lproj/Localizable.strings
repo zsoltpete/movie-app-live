@@ -11,6 +11,9 @@
 "search.textfield.placeholder" = "Filmek, Rendező, Színész, Színésznő, stb.";
 "button.close.text" = "Bezárás";
 "unexpected.error.title" = "Váratlan hiba";
+"apierror.error.title" = "API hiba";
+"clienterror.error.title" = "Kliens hiba";
+"mappingerror.error.title" = "Leképezési hiba";
 "unexpected.error.message" = "Valami hiba történt. Kérlek próbáld újra később.";
 "favoriteMovies.title" = "Kedvencek";
 "detail.rate.button" = "Értékeld a filmet";
@@ -27,6 +30,8 @@
 "addReview.subTitle" = "Írj őszinte véleményt";
 "addReview.buttonTitle" = "Vélemény elküldése";
 
+"mediaItem.default.duration" = "1h 25min";
+
 "settings.title" = "Beállítások";
 "settings.chooseLanguage" = "Nyelv kiválasztása";
 "settings.chooseTheme" = "Téma kiválasztása";
@@ -35,3 +40,10 @@
 "settings.lang.hungarian" = "Magyar";
 "settings.theme.light" = "Világos mód";
 "settings.theme.dark" = "Sötét mód";
+"version" = "Verzió";
+"createdby" = "Készítette: Névtelen";
+"detail.topReviews" = "Értékelések [EN]";
+"birthYear" = "Születési év";
+"city" = "Város";
+"bio" = "Életrajz";
+"popularity" = "Népszerűség";

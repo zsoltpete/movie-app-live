@@ -1,15 +1,15 @@
 //
-//  FetchFavoriteMovieRequest.swift
+//  FetchFavoriteMediaItemRequest.swift
 //  movie-app-live
 //
 //  Created by Zsolt Pete on 2025. 05. 06..
 //
 
-struct FetchFavoriteMovieRequest {
+struct FetchFavoriteMediaItemRequest: LocalizedRequestable {
     let accessToken: String = Config.bearerToken
-    let accountId: Int = 21889570
+    let accountId: Int = Config.accountId
     
     func asRequestParams() -> [String: Any] {
-        return [:]
+        return languageParam
     }
 }

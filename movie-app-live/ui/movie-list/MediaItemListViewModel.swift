@@ -24,7 +24,13 @@ class MediaItemListViewModel: MediaItemListViewModelProtocol, ErrorPresentable {
     
     init() {
         
-        Publishers.CombineLatest(reachedBottomSubject, genreIdSubject)
+        let genreIdNewValue = genreIdSubject.handleEvents(receiveOutput: { [weak self]_ in
+            self?.mediaItems.removeAll()
+            self?.currentPage = 1
+        })
+        .eraseToAnyPublisher()
+        
+        Publishers.CombineLatest(reachedBottomSubject, genreIdNewValue)
             .filter { [weak self]_ in
                 guard let self = self else {
                     preconditionFailure("There is no self")
