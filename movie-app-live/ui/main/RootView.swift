@@ -16,9 +16,10 @@ struct RootView: View {
         ZStack(alignment: .top) {
             MainTabView(selectedTab: $selectedTab)
 
-            if !viewModel.isConnected {
-                OfflineBannerView()
-            }
+            OfflineBannerView()
+                .padding(.top, viewModel.isBannerAppear ? 0.0 : -200.0)
+                .animation(.easeInOut(duration: 0.3), value: viewModel.isBannerAppear)
+            
         }
     }
 }
