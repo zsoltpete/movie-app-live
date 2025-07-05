@@ -28,7 +28,7 @@ class GenreSectionUseCaseImpl: GenreSectionUseCase {
     
     var showAppearPopup: AnyPublisher<Bool, Never> {
         appearSubject.map { counter in
-            counter == 3
+            counter == 10
         }
         .eraseToAnyPublisher()
     }

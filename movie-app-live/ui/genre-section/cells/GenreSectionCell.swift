@@ -24,7 +24,6 @@ struct GenreSectionCell: View {
                 Spacer()
                 Image(.rightArrow)
                     .rotationEffect(.degrees(isExpanded ? 90 : 0))
-                    //.animation(.easeInOut, value: isExpanded)
                     .onTapGesture {
                         isExpanded.toggle()
                         

@@ -32,6 +32,6 @@ struct GenreMotdCell: View {
                     .padding(LayoutConst.normalPadding)
             }
         }
-        .padding(LayoutConst.maxPadding)
+        .padding(.horizontal, LayoutConst.maxPadding)
     }
 }

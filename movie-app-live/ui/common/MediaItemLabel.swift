@@ -33,7 +33,7 @@ struct MediaItemLabel: View {
             text = "\(popularity)"
             imageRes = .person
         case .adult(let adult):
-            text = adult ? "available" : "unavailable"
+            text = adult ? "adult.only".localized() : "everyone".localized()
             imageRes = .closeCaption
         }
         

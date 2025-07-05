@@ -30,7 +30,7 @@
 "noInternet" = "Нет подключения к интернету";
 "addReview.subTitle" = "Напишите честный отзыв";
 "addReview.buttonTitle" = "Отправить отзыв";
-"mediaItem.default.duration" = "1ч 25мин";
+"mediaItem.default.duration" = "-";
 "settings.title" = "Настройки";
 "settings.chooseLanguage" = "Выбор языка";
 "settings.chooseTheme" = "Выбор темы";
@@ -46,3 +46,8 @@
 "city" = "Город";
 "bio" = "Биография";
 "popularity" = "Популярность";
+"appReview.title" = "Оцените приложение";
+"appReview.desc" = "Мы будем признательны, если вы оцените приложение в App Store. Спасибо!";
+"appReview.button.title" = "ОК";
+"everyone" = "Mindenkinek";
+"adult.only" = "18+";

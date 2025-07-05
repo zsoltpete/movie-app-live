@@ -30,7 +30,7 @@
 "addReview.subTitle" = "Írj őszinte véleményt";
 "addReview.buttonTitle" = "Vélemény elküldése";
 
-"mediaItem.default.duration" = "1h 25min";
+"mediaItem.default.duration" = "-";
 
 "settings.title" = "Beállítások";
 "settings.chooseLanguage" = "Nyelv kiválasztása";
@@ -47,3 +47,8 @@
 "city" = "Város";
 "bio" = "Életrajz";
 "popularity" = "Népszerűség";
+"appReview.title" = "Értékeld az appot";
+"appReview.desc" = "Nagyra értékeljük ha az App Store-ban értékeled az alkalmazást. Köszönjük";
+"appReview.button.title" = "Rendben";
+"everyone" = "Mindenkinek";
+"adult.only" = "18+";

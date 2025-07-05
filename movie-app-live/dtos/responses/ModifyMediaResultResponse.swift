@@ -1,11 +1,11 @@
 //
-//  EditFavoriteResponse.swift
+//  ModifyMediaResultResponse.swift
 //  movie-app-live
 //
 //  Created by Zsolt Pete on 2025. 05. 06..
 //
 
-struct EditFavoriteResponse : Decodable {
+struct ModifyMediaResultResponse : Decodable {
     let success : Bool
     let statusCode : Int
     let statusMessage : String

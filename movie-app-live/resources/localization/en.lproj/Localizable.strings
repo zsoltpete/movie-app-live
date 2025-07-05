@@ -29,7 +29,7 @@
 "noInternet" = "No Internet Connection";
 "addReview.subTitle" = "Write an honest review";
 "addReview.buttonTitle" = "Submit Review";
-"mediaItem.default.duration" = "1h 25min";
+"mediaItem.default.duration" = "-";
 "settings.title" = "Settings";
 "settings.chooseLanguage" = "Choose Language";
 "settings.chooseTheme" = "Choose Theme";
@@ -45,3 +45,8 @@
 "city" = "City";
 "bio" = "Biography";
 "popularity" = "Popularity";
+"appReview.title" = "Rate the app";
+"appReview.desc" = "We appreciate it if you rate the app on the App Store. Thank you!";
+"appReview.button.title" = "OK";
+"everyone" = "Mindenkinek";
+"adult.only" = "18+";

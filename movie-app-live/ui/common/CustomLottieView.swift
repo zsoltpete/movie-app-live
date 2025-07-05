@@ -13,14 +13,6 @@ struct CustomLottieView: View {
     let completion: () -> Void
     
     var body: some View {
-        /*
-        LottieView {
-                    try await loadAnimation()
-                } placeholder: {
-                    ProgressView()
-                }
-        */
-        
         LottieView {
             let fileURL = Bundle.main.url(forResource: "movies", withExtension: "json")!
             return await LottieAnimation
